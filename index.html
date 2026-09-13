@@ -22,16 +22,11 @@
   --purple: #a855f7;
   --yellow: #facc15;
 }
-
 body {
   font-family: 'Segoe UI', system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  padding-bottom: 70px;
+  background: var(--bg); color: var(--text);
+  min-height: 100vh; padding-bottom: 70px;
 }
-
-/* HEADER */
 header {
   background: linear-gradient(135deg, #1a1a2e, #16213e);
   border-bottom: 2px solid var(--accent);
@@ -42,38 +37,27 @@ header {
 header h1 { font-size: 1.2rem; font-weight: 700; color: var(--accent); }
 header p { font-size: 0.73rem; color: var(--muted); margin-top: 2px; }
 .gear-btn {
-  background: none;
-  border: 1px solid var(--border);
-  color: var(--muted);
-  padding: 8px 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.2s;
-  flex-shrink: 0;
+  background: none; border: 1px solid var(--border);
+  color: var(--muted); padding: 8px 10px; border-radius: 10px;
+  cursor: pointer; font-size: 1rem; transition: all 0.2s; flex-shrink: 0;
 }
 .gear-btn:hover { border-color: var(--accent); color: var(--accent); }
 
 /* BOTTOM NAV */
 .bottom-nav {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  background: #12122a;
-  border-top: 1px solid var(--border);
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: #12122a; border-top: 1px solid var(--border);
   display: flex; z-index: 200;
   padding-bottom: env(safe-area-inset-bottom);
 }
 .nav-btn {
-  flex: 1; padding: 10px 4px 8px;
-  background: none; border: none;
-  color: var(--muted);
-  font-size: 0.6rem; font-weight: 700;
-  cursor: pointer;
-  display: flex; flex-direction: column; align-items: center; gap: 3px;
-  text-transform: uppercase; letter-spacing: 0.3px;
-  transition: color 0.2s;
+  flex: 1; padding: 8px 2px 6px;
+  background: none; border: none; color: var(--muted);
+  font-size: 0.55rem; font-weight: 700; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  text-transform: uppercase; letter-spacing: 0.3px; transition: color 0.2s;
 }
-.nav-btn .ic { font-size: 1.3rem; }
+.nav-btn .ic { font-size: 1.2rem; }
 .nav-btn.active { color: var(--accent); }
 
 /* PAGES */
@@ -82,331 +66,233 @@ header p { font-size: 0.73rem; color: var(--muted); margin-top: 2px; }
 
 /* CARD */
 .card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 18px;
-  margin-bottom: 14px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 18px; margin-bottom: 14px;
 }
 .card-title {
-  font-size: 0.73rem; font-weight: 700;
-  color: var(--accent);
-  text-transform: uppercase; letter-spacing: 1px;
-  margin-bottom: 14px;
+  font-size: 0.73rem; font-weight: 700; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
 }
 
 /* NAME CHIPS */
-.name-chips {
-  display: flex; flex-wrap: wrap; gap: 8px;
-  margin-bottom: 10px;
-}
+.name-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
 .name-chip {
-  padding: 9px 16px;
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: 30px;
-  color: var(--text);
-  font-size: 0.88rem; font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s;
-  user-select: none;
+  padding: 9px 16px; background: var(--bg);
+  border: 1.5px solid var(--border); border-radius: 30px;
+  color: var(--text); font-size: 0.88rem; font-weight: 600;
+  cursor: pointer; transition: all 0.15s; user-select: none;
 }
 .name-chip:active { transform: scale(0.95); }
 .name-chip.selected {
-  background: var(--green);
-  border-color: var(--green);
-  color: #fff;
+  background: var(--green); border-color: var(--green); color: #fff;
   box-shadow: 0 0 14px rgba(16,185,129,0.5);
 }
-.name-chip.add-chip {
-  border-style: dashed;
-  color: var(--muted);
-  font-size: 0.82rem;
-}
-
-.new-name-row {
-  display: none;
-  gap: 8px; margin-top: 8px;
-}
+.name-chip.add-chip { border-style: dashed; color: var(--muted); font-size: 0.82rem; }
+.new-name-row { display: none; gap: 8px; margin-top: 8px; }
 .new-name-row.open { display: flex; }
 
 /* INPUTS */
 .text-input {
-  flex: 1; padding: 10px 12px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  color: var(--text);
-  font-size: 0.95rem; outline: none;
-  transition: border-color 0.2s;
+  flex: 1; padding: 10px 12px; background: var(--bg);
+  border: 1px solid var(--border); border-radius: 10px;
+  color: var(--text); font-size: 0.95rem; outline: none; transition: border-color 0.2s;
 }
 .text-input:focus { border-color: var(--accent); }
-
 .small-btn {
-  padding: 10px 16px;
-  background: var(--accent);
-  border: none; border-radius: 10px;
-  color: #fff; font-weight: 700;
-  cursor: pointer; font-size: 0.9rem;
-  white-space: nowrap;
+  padding: 10px 16px; background: var(--accent);
+  border: none; border-radius: 10px; color: #fff;
+  font-weight: 700; cursor: pointer; font-size: 0.9rem; white-space: nowrap;
 }
 
 /* SLOT BUTTONS */
-.slot-buttons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
+.slot-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .slot-btn {
-  padding: 14px 8px;
-  background: var(--bg);
-  border: 2px solid var(--border);
-  border-radius: 14px;
-  color: var(--muted);
-  font-size: 1.1rem; font-weight: 800;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.2s;
+  padding: 14px 8px; background: var(--bg); border: 2px solid var(--border);
+  border-radius: 14px; color: var(--muted); font-size: 1.1rem; font-weight: 800;
+  cursor: pointer; text-align: center; transition: all 0.2s;
 }
 .slot-btn span { display: block; font-size: 0.68rem; font-weight: 600; margin-top: 3px; }
-.slot-btn[data-slot="7"].selected { border-color: #3b82f6; color: #3b82f6; background: rgba(59,130,246,0.1); }
-.slot-btn[data-slot="8"].selected { border-color: #10b981; color: #10b981; background: rgba(16,185,129,0.1); }
-.slot-btn[data-slot="9"].selected { border-color: #f97316; color: #f97316; background: rgba(249,115,22,0.1); }
+.slot-btn[data-slot="7"].selected { border-color:#3b82f6;color:#3b82f6;background:rgba(59,130,246,0.1); }
+.slot-btn[data-slot="8"].selected { border-color:#10b981;color:#10b981;background:rgba(16,185,129,0.1); }
+.slot-btn[data-slot="9"].selected { border-color:#f97316;color:#f97316;background:rgba(249,115,22,0.1); }
 
 /* EXERCISE GRID */
-.ex-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 14px;
-}
+.ex-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
 .ex-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 12px;
-  transition: border-color 0.2s;
-  position: relative;
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 12px; padding: 12px; transition: border-color 0.2s; position: relative;
 }
 .ex-card:focus-within { border-color: var(--accent); }
 .ex-card-header { display: flex; justify-content: space-between; align-items: flex-start; }
 .ex-icon { font-size: 1.3rem; margin-bottom: 4px; display: block; }
 .ex-name { font-size: 0.73rem; font-weight: 700; color: var(--text); margin-bottom: 1px; }
-.ex-unit { font-size: 0.65rem; color: var(--muted); display: block; margin-bottom: 4px; }
-
-/* Info button */
+.ex-unit { font-size: 0.62rem; color: var(--muted); display: block; margin-bottom: 4px; }
 .info-btn {
-  background: none; border: none;
-  color: var(--muted); font-size: 0.9rem;
-  cursor: pointer; padding: 0 2px;
-  line-height: 1; flex-shrink: 0;
-  transition: color 0.2s;
+  background: none; border: none; color: var(--muted); font-size: 0.9rem;
+  cursor: pointer; padding: 0 2px; line-height: 1; flex-shrink: 0; transition: color 0.2s;
 }
 .info-btn:hover { color: var(--accent); }
-
-/* Multiplier badge */
 .mult-badge {
-  display: inline-block;
-  font-size: 0.63rem; font-weight: 800;
+  display: inline-block; font-size: 0.62rem; font-weight: 800;
   padding: 2px 7px; border-radius: 6px;
-  background: rgba(249,115,22,0.15);
-  color: var(--accent);
-  margin-bottom: 6px;
-  transition: all 0.2s;
+  background: rgba(249,115,22,0.15); color: var(--accent);
+  margin-bottom: 6px; transition: all 0.2s;
 }
-.mult-badge.active {
-  background: rgba(249,115,22,0.3);
-  color: #fff;
-}
-
+.mult-badge.active { background: rgba(249,115,22,0.3); color: #fff; }
 .num-input {
-  width: 100%; padding: 8px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: #fff;
-  font-size: 1.2rem; font-weight: 700;
-  text-align: center; outline: none;
-  transition: border-color 0.2s;
+  width: 100%; padding: 8px; background: var(--card);
+  border: 1px solid var(--border); border-radius: 8px;
+  color: #fff; font-size: 1.2rem; font-weight: 700;
+  text-align: center; outline: none; transition: border-color 0.2s;
 }
 .num-input:focus { border-color: var(--accent); }
-
-/* Per-exercise score */
 .ex-pts {
-  font-size: 0.72rem; font-weight: 800;
-  color: var(--green);
-  text-align: right;
-  margin-top: 5px;
-  min-height: 1rem;
-  transition: all 0.2s;
+  font-size: 0.72rem; font-weight: 800; color: var(--green);
+  text-align: right; margin-top: 5px; min-height: 1rem; transition: all 0.2s;
 }
 
 /* SCORE PREVIEW */
 .score-preview {
   background: linear-gradient(135deg, #1f1f35, #16213e);
   border: 1px solid rgba(249,115,22,0.3);
-  border-radius: 14px;
-  padding: 16px;
-  text-align: center;
-  margin-bottom: 14px;
+  border-radius: 14px; padding: 16px; text-align: center; margin-bottom: 14px;
 }
 .score-num { font-size: 2.8rem; font-weight: 800; color: var(--accent); line-height: 1; }
 .score-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
-
-/* Score breakdown */
 .score-breakdown {
-  margin-top: 12px;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding-top: 10px;
-  text-align: left;
+  margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 10px; text-align: left;
 }
 .bd-row {
   display: flex; justify-content: space-between; align-items: center;
-  font-size: 0.73rem; padding: 3px 0;
-  color: var(--muted);
+  font-size: 0.73rem; padding: 3px 0; color: var(--muted);
 }
 .bd-row .bd-pts { color: var(--accent); font-weight: 700; }
-
 .save-btn {
   width: 100%; padding: 15px;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   color: #fff; font-size: 1rem; font-weight: 700;
-  border: none; border-radius: 12px;
-  cursor: pointer;
-  transition: opacity 0.2s, transform 0.1s;
+  border: none; border-radius: 12px; cursor: pointer; transition: opacity 0.2s, transform 0.1s;
 }
 .save-btn:active { transform: scale(0.98); opacity: 0.9; }
 .save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-/* VERSENY TAB */
-.group-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-bottom: 16px;
-}
-.group-box {
-  border-radius: 14px;
-  padding: 14px 8px;
-  text-align: center;
-  border: 2px solid transparent;
-}
+/* VERSENY */
+.group-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+.group-box { border-radius: 14px; padding: 14px 8px; text-align: center; border: 2px solid transparent; }
 .group-box.winner { border-color: var(--yellow) !important; }
 .crown { font-size: 1rem; display: block; margin-bottom: 4px; min-height: 1.4rem; }
 .group-time-label { font-size: 1.4rem; font-weight: 800; }
 .group-time-sub { font-size: 0.68rem; color: var(--muted); margin-bottom: 8px; }
 .group-count { font-size: 2rem; font-weight: 800; }
 .group-count-sub { font-size: 0.68rem; color: var(--muted); }
-
 .bar-row { margin-bottom: 10px; }
-.bar-label {
-  display: flex; justify-content: space-between;
-  font-size: 0.73rem; color: var(--muted);
-  margin-bottom: 4px;
-}
-.bar-track {
-  background: var(--bg);
-  border-radius: 10px; height: 12px;
-  overflow: hidden;
-}
-.bar-fill {
-  height: 100%; border-radius: 10px;
-  transition: width 0.6s ease;
-  min-width: 4px;
-}
-
+.bar-label { display: flex; justify-content: space-between; font-size: 0.73rem; color: var(--muted); margin-bottom: 4px; }
+.bar-track { background: var(--bg); border-radius: 10px; height: 12px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 10px; transition: width 0.6s ease; min-width: 4px; }
 .member-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.member-tag {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 4px 10px;
-  font-size: 0.75rem; color: var(--muted);
-}
+.member-tag { background: var(--bg); border: 1px solid var(--border); border-radius: 20px; padding: 4px 10px; font-size: 0.75rem; color: var(--muted); }
 .member-tag.active { color: var(--text); border-color: var(--green); }
 
-/* FEJLŐDÉS TAB */
+/* FEJLŐDÉS */
 .styled-select {
-  width: 100%; padding: 10px 14px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  color: var(--text);
-  font-size: 0.93rem;
-  outline: none; cursor: pointer;
-  margin-bottom: 12px;
-  appearance: none;
+  width: 100%; padding: 10px 14px; background: var(--bg);
+  border: 1px solid var(--border); border-radius: 10px; color: var(--text);
+  font-size: 0.93rem; outline: none; cursor: pointer; margin-bottom: 12px; appearance: none;
 }
 .styled-select:focus { border-color: var(--accent); }
-
-.ex-tabs {
-  display: flex; gap: 6px;
-  overflow-x: auto; padding-bottom: 4px;
-  margin-bottom: 12px; scrollbar-width: none;
-}
+.ex-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 12px; scrollbar-width: none; }
 .ex-tabs::-webkit-scrollbar { display: none; }
 .ex-tab {
-  padding: 6px 11px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--muted);
-  font-size: 0.7rem; font-weight: 700;
-  cursor: pointer; white-space: nowrap; flex-shrink: 0;
-  text-transform: uppercase;
-  transition: all 0.15s;
+  padding: 6px 11px; background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--muted); font-size: 0.7rem; font-weight: 700;
+  cursor: pointer; white-space: nowrap; flex-shrink: 0; text-transform: uppercase; transition: all 0.15s;
 }
 .ex-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-
 .chart-wrap { position: relative; height: 220px; }
-
-.mini-stats {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 8px; margin-top: 12px;
-}
-.mini-stat {
-  background: var(--bg); border: 1px solid var(--border);
-  border-radius: 10px; padding: 10px 6px; text-align: center;
-}
+.mini-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 12px; }
+.mini-stat { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 10px 6px; text-align: center; }
 .mini-stat .val { font-size: 1.1rem; font-weight: 800; color: var(--accent); }
 .mini-stat .lbl { font-size: 0.62rem; color: var(--muted); margin-top: 2px; text-transform: uppercase; }
 
-/* ELŐZMÉNYEK TAB */
+/* ELŐZMÉNYEK */
 .hist-filters { display: flex; gap: 8px; margin-bottom: 12px; }
 .hist-filters select { flex: 1; margin: 0; }
-
-.entry-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 14px; padding: 14px; margin-bottom: 10px;
-}
-.entry-top {
-  display: flex; justify-content: space-between; align-items: flex-start;
-  margin-bottom: 10px;
-}
+.entry-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 14px; margin-bottom: 10px; }
+.entry-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
 .entry-name { font-weight: 700; font-size: 0.95rem; }
 .entry-meta { font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
 .entry-right { text-align: right; }
 .entry-score-num { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
 .entry-score-lbl { font-size: 0.62rem; color: var(--muted); }
 .del-btn {
-  display: block; margin-top: 6px;
-  background: none; border: 1px solid #3a2a2a;
-  color: var(--red); padding: 4px 10px;
-  border-radius: 6px; cursor: pointer; font-size: 0.72rem;
-  transition: all 0.2s;
+  display: block; margin-top: 6px; background: none;
+  border: 1px solid #3a2a2a; color: var(--red);
+  padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.72rem; transition: all 0.2s;
 }
 .del-btn:hover { background: var(--red); color: #fff; border-color: var(--red); }
-
-.entry-pills {
-  display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px;
-}
-.pill {
-  background: var(--bg); border-radius: 8px;
-  padding: 6px 3px; text-align: center;
-}
+.entry-pills { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
+.pill { background: var(--bg); border-radius: 8px; padding: 6px 3px; text-align: center; }
 .pill .p-icon { font-size: 0.85rem; }
 .pill .p-val { font-size: 0.8rem; font-weight: 700; }
 .pill .p-unit { font-size: 0.58rem; color: var(--muted); }
+
+/* JÁTÉKSZABÁLY */
+.szabaly-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 20px; margin-bottom: 14px;
+  scroll-margin-top: 20px;
+}
+.szabaly-header {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--border);
+}
+.szabaly-icon { font-size: 2rem; }
+.szabaly-title { font-size: 1rem; font-weight: 800; color: var(--accent); }
+.szabaly-subtitle { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+.szabaly-section { margin-bottom: 14px; }
+.szabaly-section-label {
+  font-size: 0.65rem; font-weight: 800; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;
+}
+.szabaly-text { font-size: 0.88rem; color: var(--text); line-height: 1.7; }
+.szabaly-example {
+  background: var(--bg); border-radius: 10px; padding: 10px 14px;
+  margin: 6px 0; font-size: 0.83rem; color: var(--text);
+  border-left: 3px solid var(--accent);
+}
+.szabaly-example strong { color: var(--accent); }
+.tier-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.tier-table th {
+  background: var(--bg); color: var(--accent);
+  font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 8px; text-align: center;
+}
+.tier-table td { border-bottom: 1px solid var(--border); padding: 8px; text-align: center; font-size: 0.83rem; }
+.tier-table tr:last-child td { border-bottom: none; }
+
+/* HOW-TO BOX */
+.how-to-box {
+  background: linear-gradient(135deg, rgba(249,115,22,0.09), rgba(249,115,22,0.03));
+  border: 1px solid rgba(249,115,22,0.3);
+  border-radius: 12px; padding: 14px 16px; margin-bottom: 14px;
+}
+.how-to-label {
+  font-size: 0.68rem; font-weight: 800; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;
+}
+/* COLLAPSIBLE DETAILS */
+.rendszer-details { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-top: 4px; }
+.rendszer-details summary {
+  padding: 12px 14px; font-size: 0.8rem; font-weight: 700; color: var(--muted);
+  cursor: pointer; list-style: none; display: flex; align-items: center; gap: 6px;
+  background: var(--bg); transition: color 0.2s; user-select: none;
+}
+.rendszer-details summary::-webkit-details-marker { display: none; }
+.rendszer-details summary::after { content: '▼'; font-size: 0.6rem; margin-left: auto; transition: transform 0.2s; }
+.rendszer-details[open] summary::after { transform: rotate(180deg); }
+.rendszer-details[open] summary { color: var(--accent); }
+.rendszer-body { padding: 12px 14px; background: var(--bg); border-top: 1px solid var(--border); }
 
 /* SETTINGS MODAL */
 .overlay {
@@ -416,122 +302,41 @@ header p { font-size: 0.73rem; color: var(--muted); margin-top: 2px; }
 }
 .overlay.open { display: flex; }
 .modal {
-  background: var(--card);
-  border-radius: 20px 20px 0 0;
-  padding: 24px 20px 32px;
-  width: 100%; max-width: 500px;
-  max-height: 80vh; overflow-y: auto;
+  background: var(--card); border-radius: 20px 20px 0 0;
+  padding: 24px 20px 32px; width: 100%; max-width: 500px; max-height: 80vh; overflow-y: auto;
 }
 .modal-title {
-  font-size: 1rem; font-weight: 700;
-  color: var(--accent); margin-bottom: 16px;
+  font-size: 1rem; font-weight: 700; color: var(--accent); margin-bottom: 16px;
   display: flex; justify-content: space-between; align-items: center;
 }
-.modal-close {
-  background: none; border: none; color: var(--muted);
-  font-size: 1.2rem; cursor: pointer; padding: 4px;
-}
-
-.m-row {
-  display: flex; align-items: center; gap: 10px;
-  padding: 10px 0; border-bottom: 1px solid var(--border);
-}
+.modal-close { background: none; border: none; color: var(--muted); font-size: 1.2rem; cursor: pointer; padding: 4px; }
+.m-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); }
 .m-row:last-child { border-bottom: none; }
 .m-name { flex: 1; font-size: 0.9rem; }
-.m-ora {
-  font-size: 0.73rem; font-weight: 700;
-  padding: 3px 9px; border-radius: 8px;
-}
-.m-del {
-  background: none; border: none;
-  color: var(--red); cursor: pointer;
-  font-size: 0.95rem; padding: 4px 6px;
-}
-
+.m-ora { font-size: 0.73rem; font-weight: 700; padding: 3px 9px; border-radius: 8px; }
+.m-del { background: none; border: none; color: var(--red); cursor: pointer; font-size: 0.95rem; padding: 4px 6px; }
 .add-member-form {
   display: flex; gap: 8px; flex-wrap: wrap;
-  margin-top: 16px; padding-top: 14px;
-  border-top: 1px solid var(--border);
+  margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border);
 }
 .add-member-form input { flex: 2; min-width: 120px; }
 .ora-select {
-  padding: 10px 10px;
-  background: var(--bg); border: 1px solid var(--border);
-  border-radius: 10px; color: var(--text);
-  font-size: 0.88rem; outline: none;
-}
-
-/* INFO MODAL */
-.info-overlay {
-  display: none; position: fixed; inset: 0;
-  background: rgba(0,0,0,0.8); z-index: 500;
-  align-items: flex-end; justify-content: center;
-}
-.info-overlay.open { display: flex; }
-.info-modal {
-  background: var(--card);
-  border-radius: 20px 20px 0 0;
-  padding: 24px 20px 40px;
-  width: 100%; max-width: 500px;
-  max-height: 75vh; overflow-y: auto;
-}
-.info-modal-title {
-  font-size: 1rem; font-weight: 700; color: var(--accent);
-  margin-bottom: 4px;
-  display: flex; justify-content: space-between; align-items: center;
-}
-.info-modal-sub {
-  font-size: 0.75rem; color: var(--muted); margin-bottom: 16px;
-}
-.info-section-label {
-  font-size: 0.68rem; font-weight: 800;
-  color: var(--muted); text-transform: uppercase; letter-spacing: 1px;
-  margin-bottom: 6px; margin-top: 14px;
-}
-.info-text {
-  font-size: 0.88rem; color: var(--text); line-height: 1.65;
-}
-.info-example {
-  background: var(--bg); border-radius: 10px;
-  padding: 10px 14px; margin: 8px 0;
-  font-size: 0.83rem; color: var(--text);
-  border-left: 3px solid var(--accent);
-}
-.info-example strong { color: var(--accent); }
-
-/* Multiplier table */
-.mult-table {
-  width: 100%; border-collapse: collapse; margin-top: 8px;
-}
-.mult-table th {
-  background: var(--bg); color: var(--accent);
-  font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.5px;
-  padding: 8px; text-align: center;
-}
-.mult-table td {
-  border-bottom: 1px solid var(--border);
-  padding: 8px; text-align: center; font-size: 0.83rem;
-}
-.mult-table tr.highlight td {
-  background: rgba(249,115,22,0.15);
-  color: var(--accent); font-weight: 700;
+  padding: 10px; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 10px; color: var(--text); font-size: 0.88rem; outline: none;
 }
 
 /* MISC */
 .loading { text-align: center; padding: 40px; color: var(--muted); }
 .empty { text-align: center; padding: 30px 20px; color: var(--muted); font-size: 0.9rem; }
-
 .toast {
   position: fixed; bottom: 76px; left: 50%;
   transform: translateX(-50%) translateY(20px);
-  background: var(--green); color: #fff;
-  padding: 11px 22px; border-radius: 10px;
+  background: var(--green); color: #fff; padding: 11px 22px; border-radius: 10px;
   font-weight: 700; font-size: 0.9rem;
   opacity: 0; transition: opacity 0.3s, transform 0.3s;
   z-index: 999; white-space: nowrap; pointer-events: none;
 }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
 @media (max-width: 380px) {
   .entry-pills { grid-template-columns: repeat(3, 1fr); }
   .mini-stats { grid-template-columns: repeat(2, 1fr); }
@@ -544,10 +349,7 @@ header p { font-size: 0.73rem; color: var(--muted); margin-top: 2px; }
 <!-- SETTINGS MODAL -->
 <div class="overlay" id="settingsOverlay" onclick="if(event.target===this)closeSettings()">
   <div class="modal">
-    <div class="modal-title">
-      ⚙️ Tagok kezelése
-      <button class="modal-close" onclick="closeSettings()">✕</button>
-    </div>
+    <div class="modal-title">⚙️ Tagok kezelése <button class="modal-close" onclick="closeSettings()">✕</button></div>
     <div id="membersList"><div class="loading">Betöltés...</div></div>
     <div id="restoreSection"></div>
     <div class="add-member-form">
@@ -560,18 +362,6 @@ header p { font-size: 0.73rem; color: var(--muted); margin-top: 2px; }
       </select>
       <button class="small-btn" onclick="addMember()">+ Hozzáad</button>
     </div>
-  </div>
-</div>
-
-<!-- INFO MODAL -->
-<div class="info-overlay" id="infoOverlay" onclick="if(event.target===this)closeInfo()">
-  <div class="info-modal">
-    <div class="info-modal-title">
-      <span id="infoTitle">—</span>
-      <button class="modal-close" onclick="closeInfo()">✕</button>
-    </div>
-    <div id="infoSubtitle" class="info-modal-sub"></div>
-    <div id="infoBody"></div>
   </div>
 </div>
 
@@ -595,19 +385,15 @@ header p { font-size: 0.73rem; color: var(--muted); margin-top: 2px; }
 
 <!-- PAGE: BEÍRÁS -->
 <div class="page active" id="pageBeiras">
-
   <div class="card">
     <div class="card-title">👤 Ki vagy?</div>
-    <div class="name-chips" id="nameChips">
-      <div class="loading" style="padding:10px">Betöltés...</div>
-    </div>
-    <button class="name-chip add-chip" id="addChipBtn" onclick="toggleNewName()">+ Nem vagyok a listán</button>
+    <div class="name-chips" id="nameChips"><div class="loading" style="padding:10px">Betöltés...</div></div>
+    <button class="name-chip add-chip" onclick="toggleNewName()">+ Nem vagyok a listán</button>
     <div class="new-name-row" id="newNameRow">
       <input type="text" id="newPersonInput" class="text-input" placeholder="Neved...">
       <button class="small-btn" onclick="confirmNewPerson()">OK</button>
     </div>
   </div>
-
   <div class="card">
     <div class="card-title">🕐 Melyik órára jársz?</div>
     <div class="slot-buttons">
@@ -616,18 +402,15 @@ header p { font-size: 0.73rem; color: var(--muted); margin-top: 2px; }
       <button class="slot-btn" data-slot="9" onclick="selectSlot('9',this)">9:00 <span>óra</span></button>
     </div>
   </div>
-
   <div class="card">
     <div class="card-title">📝 Mai eredmények</div>
     <div class="ex-grid" id="exGrid"></div>
-
     <div class="score-preview">
       <div class="score-label">Összpontszám</div>
       <div class="score-num" id="liveScore">0</div>
       <div class="score-label">pont</div>
       <div class="score-breakdown" id="scoreBreakdown"></div>
     </div>
-
     <div id="readonlyNote" style="display:none;text-align:center;padding:10px;color:#888;font-size:0.85rem;">
       📚 Archív szezon — csak megtekintés
     </div>
@@ -669,37 +452,251 @@ header p { font-size: 0.73rem; color: var(--muted); margin-top: 2px; }
   <div id="historyContent"><div class="loading">Betöltés...</div></div>
 </div>
 
+<!-- PAGE: JÁTÉKSZABÁLY -->
+<div class="page" id="pageSzabaly">
+
+  <!-- QUICK SUMMARY CARD -->
+  <div class="card" style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-color:rgba(249,115,22,0.4)">
+    <div style="font-size:1rem;font-weight:800;color:var(--accent);margin-bottom:12px;">📈 Ha követnéd a fejlődésed, írd be a számokat!</div>
+    <div style="font-size:0.82rem;color:var(--muted);margin-bottom:14px;">Számold, hány ismétlést hajtottál végre. Írd be az eredményedet — hogy lásd a saját fejlődésed!</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:rgba(249,115,22,0.08);border-radius:8px;border-left:3px solid #f97316;">
+        <span style="font-size:0.82rem;color:var(--text)">🐯 Tigrisből fekvő</span>
+        <span style="font-size:0.78rem;font-weight:700;color:#f97316">Írd be a számot (ha fekvővel csinálod ×3)</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:rgba(59,130,246,0.08);border-radius:8px;border-left:3px solid #3b82f6;">
+        <span style="font-size:0.82rem;color:var(--text)">🏃 Inga futás</span>
+        <span style="font-size:0.78rem;font-weight:700;color:#3b82f6">Írd be a számot</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:rgba(16,185,129,0.08);border-radius:8px;border-left:3px solid #10b981;">
+        <span style="font-size:0.82rem;color:var(--text)">💪 Lógás / Húzódzkodás</span>
+        <span style="font-size:0.78rem;font-weight:700;color:#10b981">Írd be a számot (hajlított kar ×3)</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:rgba(168,85,247,0.08);border-radius:8px;border-left:3px solid #a855f7;">
+        <span style="font-size:0.82rem;color:var(--text)">🦵 Rúgások (csípő fölé)</span>
+        <span style="font-size:0.78rem;font-weight:700;color:#a855f7">Írd be a számot</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:rgba(244,63,94,0.08);border-radius:8px;border-left:3px solid #f43f5e;">
+        <span style="font-size:0.82rem;color:var(--text)">🐾 Quadropedal Gallop</span>
+        <span style="font-size:0.78rem;font-weight:700;color:#f43f5e">Írd be a számot</span>
+      </div>
+    </div>
+    <div style="margin-top:14px;padding:10px 12px;background:rgba(16,185,129,0.12);border-radius:8px;text-align:center;font-size:0.8rem;font-weight:700;color:#10b981;">
+      ✅ A többit a rendszer számolja!
+    </div>
+  </div>
+
+  <!-- ÁTVEZETÉS -->
+  <div style="text-align:center;padding:6px 0 10px;font-size:0.78rem;color:var(--muted);font-weight:600;letter-spacing:0.3px;">
+    👇 Itt láthatod részletesebben, hogy mi zajlik a háttérben
+  </div>
+
+  <!-- 1. Tigrisből fekvő -->
+  <div class="szabaly-card" id="szabaly-0">
+    <div class="szabaly-header">
+      <div class="szabaly-icon">🐯</div>
+      <div>
+        <div class="szabaly-title">Tigrisből fekvő</div>
+        <div class="szabaly-subtitle">Számold ki, majd írd be az összesített értéket</div>
+      </div>
+    </div>
+    <div class="how-to-box">
+      <div class="how-to-label">📌 Hogyan hajtsd végre</div>
+      <div class="szabaly-text">
+        Indulj <strong style="color:var(--accent)">tigris plank helyzetből</strong> (négykezlábas, de térdek a levegőben, csak kézfejek és lábujjak érintik a talajt).<br><br>
+        • <strong style="color:var(--accent)">Tigrisből fekvőtámasz</strong> = nehezebb változat → <strong style="color:#f97316">3 pontot ér</strong><br>
+        • <strong style="color:var(--accent)">Sima fekvőtámasz</strong> = alaptempó → <strong style="color:#f97316">1 pontot ér</strong>
+      </div>
+    </div>
+    <div class="szabaly-section">
+      <div class="szabaly-section-label">✏️ Mit írj be</div>
+      <div class="szabaly-text">(tigris db × 3) + (sima db × 1) = <strong style="color:var(--accent)">ezt írd be</strong></div>
+      <div class="szabaly-example">10 tigris + 20 sima → 10×3 + 20 = <strong>50</strong> → írj be <strong>50</strong>-et</div>
+      <div class="szabaly-example">0 tigris + 30 sima → <strong>30</strong> → írj be <strong>30</strong>-at</div>
+      <div class="szabaly-example">15 tigris + 0 sima → 15×3 = <strong>45</strong> → írj be <strong>45</strong>-öt</div>
+    </div>
+    <details class="rendszer-details">
+      <summary>⚡ A rendszer a háttérben (sávos szorzó)</summary>
+      <div class="rendszer-body">
+        <table class="tier-table">
+          <thead><tr><th>Beírt érték</th><th>Szorzó</th><th>Példa</th></tr></thead>
+          <tbody>
+            <tr><td>1 – 30</td><td>× 1,0</td><td>30 → 30 pont</td></tr>
+            <tr><td>31 – 40</td><td>× 1,2</td><td>40 → 48 pont</td></tr>
+            <tr><td>41 – 50</td><td>× 1,4</td><td>50 → 70 pont</td></tr>
+            <tr><td>51 – 60</td><td>× 1,6</td><td>60 → 96 pont</td></tr>
+            <tr><td>60 felett</td><td>× 1,8</td><td>70 → 126 pont</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+
+  <!-- 2. Inga futás -->
+  <div class="szabaly-card" id="szabaly-1">
+    <div class="szabaly-header">
+      <div class="szabaly-icon">🏃</div>
+      <div>
+        <div class="szabaly-title">Inga futás</div>
+        <div class="szabaly-subtitle">Minden irányváltást számolj egynek</div>
+      </div>
+    </div>
+    <div class="how-to-box" style="background:linear-gradient(135deg,rgba(59,130,246,0.09),rgba(59,130,246,0.03));border-color:rgba(59,130,246,0.3)">
+      <div class="how-to-label" style="color:#3b82f6">📌 Hogyan hajtsd végre</div>
+      <div class="szabaly-text">
+        Futás az egyik végponttól a másikig és vissza — minden <strong style="color:#3b82f6">irányváltás = 1</strong>.<br><br>
+        • Oda futás = <strong style="color:#3b82f6">1</strong><br>
+        • Visszafutás = <strong style="color:#3b82f6">+1</strong>, tehát <strong style="color:#3b82f6">oda-vissza = 2</strong>
+      </div>
+    </div>
+    <div class="szabaly-section">
+      <div class="szabaly-section-label">✏️ Mit írj be</div>
+      <div class="szabaly-text">Az összes irányváltás száma = <strong style="color:var(--accent)">ezt írd be</strong></div>
+      <div class="szabaly-example">15 oda-vissza → 15×2 = <strong>30</strong> irányváltás → írj be <strong>30</strong>-at</div>
+      <div class="szabaly-example">20 irányváltás → írj be <strong>20</strong>-at</div>
+    </div>
+    <details class="rendszer-details">
+      <summary>⚡ A rendszer a háttérben (sávos szorzó)</summary>
+      <div class="rendszer-body">
+        <table class="tier-table">
+          <thead><tr><th>Beírt érték</th><th>Szorzó</th><th>Példa</th></tr></thead>
+          <tbody>
+            <tr><td>1 – 30</td><td>× 1,0</td><td>30 → 30 pont</td></tr>
+            <tr><td>31 – 40</td><td>× 1,2</td><td>40 → 48 pont</td></tr>
+            <tr><td>41 felett</td><td>× 1,4</td><td>50 → 70 pont</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+
+  <!-- 3. Lógás / Húzódzkodás -->
+  <div class="szabaly-card" id="szabaly-2">
+    <div class="szabaly-header">
+      <div class="szabaly-icon">💪</div>
+      <div>
+        <div class="szabaly-title">Lógás / Húzódzkodás</div>
+        <div class="szabaly-subtitle">Számold ki, majd írd be az összesített értéket</div>
+      </div>
+    </div>
+    <div class="how-to-box" style="background:linear-gradient(135deg,rgba(16,185,129,0.09),rgba(16,185,129,0.03));border-color:rgba(16,185,129,0.3)">
+      <div class="how-to-label" style="color:#10b981">📌 Hogyan hajtsd végre</div>
+      <div class="szabaly-text">
+        Rúdon való megtartás — kétféle pozíció:<br><br>
+        • <strong style="color:#10b981">Nyújtott karral lógás</strong> = minden mp <strong style="color:#10b981">1 pont</strong><br>
+        • <strong style="color:#10b981">Teljesen behajlított karral lógás</strong> = minden mp <strong style="color:#10b981">3 pont</strong>
+      </div>
+    </div>
+    <div class="szabaly-section">
+      <div class="szabaly-section-label">✏️ Mit írj be</div>
+      <div class="szabaly-text">(hajlított mp × 3) + (nyújtott mp × 1) = <strong style="color:var(--accent)">ezt írd be</strong></div>
+      <div class="szabaly-example">30mp hajlítva + 20mp nyújtva → 30×3 + 20 = <strong>110</strong> → írj be <strong>110</strong>-et</div>
+      <div class="szabaly-example">0mp hajlítva + 40mp nyújtva → <strong>40</strong> → írj be <strong>40</strong>-et</div>
+    </div>
+    <details class="rendszer-details">
+      <summary>⚡ A rendszer a háttérben</summary>
+      <div class="rendszer-body">
+        <div style="color:#10b981;font-weight:700;font-size:0.85rem;">
+          A beírt szám = a pontszámod. Nincs további szorzó!
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- 4. Rúgások -->
+  <div class="szabaly-card" id="szabaly-3">
+    <div class="szabaly-header">
+      <div class="szabaly-icon">🦵</div>
+      <div>
+        <div class="szabaly-title">Rúgások (csípő fölé)</div>
+        <div class="szabaly-subtitle">Minden érvényes rúgást számolj egynek</div>
+      </div>
+    </div>
+    <div class="how-to-box" style="background:linear-gradient(135deg,rgba(168,85,247,0.09),rgba(168,85,247,0.03));border-color:rgba(168,85,247,0.3)">
+      <div class="how-to-label" style="color:#a855f7">📌 Hogyan hajtsd végre</div>
+      <div class="szabaly-text">
+        Minden <strong style="color:#a855f7">csípő fölé</strong> emelt érvényes rúgás = <strong style="color:#a855f7">1</strong>.<br><br>
+        Váltott lábbal rúgj, tartsd a törzset stabilan.
+      </div>
+    </div>
+    <div class="szabaly-section">
+      <div class="szabaly-section-label">✏️ Mit írj be</div>
+      <div class="szabaly-text">Az összes rúgás száma = <strong style="color:var(--accent)">ezt írd be</strong></div>
+      <div class="szabaly-example">35 rúgás → írj be <strong>35</strong>-öt</div>
+    </div>
+    <details class="rendszer-details">
+      <summary>⚡ A rendszer a háttérben (sávos szorzó)</summary>
+      <div class="rendszer-body">
+        <table class="tier-table">
+          <thead><tr><th>Beírt érték</th><th>Szorzó</th><th>Példa</th></tr></thead>
+          <tbody>
+            <tr><td>1 – 40</td><td>× 1,0</td><td>40 → 40 pont</td></tr>
+            <tr><td>41 – 60</td><td>× 1,2</td><td>60 → 72 pont</td></tr>
+            <tr><td>61 felett</td><td>× 1,5</td><td>70 → 105 pont</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+
+  <!-- 5. Quadropedal Gallop -->
+  <div class="szabaly-card" id="szabaly-4">
+    <div class="szabaly-header">
+      <div class="szabaly-icon">🐾</div>
+      <div>
+        <div class="szabaly-title">Quadropedal Gallop</div>
+        <div class="szabaly-subtitle">Minden gallopot számolj egynek</div>
+      </div>
+    </div>
+    <div class="how-to-box" style="background:linear-gradient(135deg,rgba(244,63,94,0.09),rgba(244,63,94,0.03));border-color:rgba(244,63,94,0.3)">
+      <div class="how-to-label" style="color:#f43f5e">📌 Hogyan hajtsd végre</div>
+      <div class="szabaly-text">
+        Négy ponton mozgás — kéz-láb koordináció, gallop mozgásminta.<br><br>
+        Minden szabályos gallop = <strong style="color:#f43f5e">1</strong>.
+      </div>
+    </div>
+    <div class="szabaly-section">
+      <div class="szabaly-section-label">✏️ Mit írj be</div>
+      <div class="szabaly-text">Az összes gallop száma = <strong style="color:var(--accent)">ezt írd be</strong></div>
+      <div class="szabaly-example">18 gallop → írj be <strong>18</strong>-at</div>
+    </div>
+    <details class="rendszer-details">
+      <summary>⚡ A rendszer a háttérben (sávos szorzó)</summary>
+      <div class="rendszer-body">
+        <table class="tier-table">
+          <thead><tr><th>Beírt érték</th><th>Szorzó</th><th>Példa</th></tr></thead>
+          <tbody>
+            <tr><td>1 – 10</td><td>× 2,5</td><td>10 → 25 pont</td></tr>
+            <tr><td>11 – 20</td><td>× 3,5</td><td>20 → 70 pont</td></tr>
+            <tr><td>21 felett</td><td>× 4,5</td><td>25 → 112,5 pont</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+</div>
+
 <!-- BOTTOM NAV -->
 <nav class="bottom-nav">
-  <button class="nav-btn active" onclick="switchPage('Beiras',this)">
-    <span class="ic">✏️</span>Beírás
-  </button>
-  <button class="nav-btn" onclick="switchPage('Verseny',this)">
-    <span class="ic">🏆</span>Verseny
-  </button>
-  <button class="nav-btn" onclick="switchPage('Fejlodes',this)">
-    <span class="ic">📈</span>Fejlődés
-  </button>
-  <button class="nav-btn" onclick="switchPage('Eloz',this)">
-    <span class="ic">📋</span>Előzmények
-  </button>
+  <button class="nav-btn active" onclick="switchPage('Beiras',this)"><span class="ic">✏️</span>Írd az eredményed!</button>
+  <button class="nav-btn" onclick="switchPage('Szabaly',this)"><span class="ic">📖</span>Szabályok</button>
+  <button class="nav-btn" onclick="switchPage('Verseny',this)"><span class="ic">🏆</span>Verseny</button>
+  <button class="nav-btn" onclick="switchPage('Fejlodes',this)"><span class="ic">📈</span>Fejlődés</button>
+  <button class="nav-btn" onclick="switchPage('Eloz',this)"><span class="ic">📋</span>Előzm.</button>
 </nav>
 
 <div class="toast" id="toast"></div>
 
 <script>
-// ===== CONFIG =====
 const SUPABASE_URL = 'https://flaimkenpoovkyiqubji.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_O0__LhTy5IWAQXExhsoH0Q_-cze5yRk';
 
 // ===== TIERED MULTIPLIER =====
-// tiers: [[maxVal, multiplier], ...] — sorted ascending, last entry catches all higher values
 function getTieredMult(val, ex) {
   if (!ex.tiers) return ex.mult || 1;
   for (const [max, m] of ex.tiers) { if (val <= max) return m; }
   return ex.tiers[ex.tiers.length - 1][1];
 }
-
 function getExScore(val, ex) {
   if (!val || val <= 0) return 0;
   if (ex.calcType === 'tiered') return +(val * getTieredMult(val, ex)).toFixed(1);
@@ -711,255 +708,114 @@ const SEASONS = {
   '2026_nyar': {
     label: '☀️ 2026 Nyár', short: 'Nyár', readonly: true,
     exercises: [
-      { key: 'guggolass',      label: 'Guggolás',             unit: 'db', icon: '🦵', unitLong: 'ismétlés (db)',        color: '#f97316', mult: 1.0,
-        desc: { intro: 'Guggolás ismétlésszáma. Minden guggolás 1 pontot ér.', examples: [], tiered: false } },
-      { key: 'logas_mp',      label: 'Lógás + Húzódzkás',    unit: 'mp', icon: '🏋️', unitLong: 'mp + húzódzkás×5',    color: '#3b82f6', mult: 0.8,
-        desc: { intro: 'Lógási másodpercek + húzódzkodások száma × 5. Szorzó: ×0.8.', examples: [], tiered: false } },
-      { key: 'krokodil',      label: 'Krokodil',             unit: 'db', icon: '🐊', unitLong: 'térdfelhúzás (db)',    color: '#10b981', mult: 0.6,
-        desc: { intro: 'Krokodil térdfelhúzás ismétlésszáma. Szorzó: ×0.6.', examples: [], tiered: false } },
-      { key: 'oldalrahajlas', label: 'Oldalrahajlás',        unit: 'db', icon: '↔️', unitLong: 'ismétlés (db)',        color: '#a855f7', mult: 1.2,
-        desc: { intro: 'Oldalrahajlás ismétlésszáma. Szorzó: ×1.2.', examples: [], tiered: false } },
-      { key: 'felugras',      label: 'Felugrás',             unit: 'db', icon: '🚀', unitLong: 'ismétlés (db)',        color: '#f43f5e', mult: 1.0,
-        desc: { intro: 'Felugrás ismétlésszáma. Minden felugrás 1 pontot ér.', examples: [], tiered: false } },
+      { key:'guggolass',      label:'Guggolás',           unit:'db', icon:'🦵', unitLong:'ismétlés (db)',         color:'#f97316', mult:1.0 },
+      { key:'logas_mp',      label:'Lógás + Húzódzkás',  unit:'mp', icon:'🏋️', unitLong:'mp + húzódzkás×5',    color:'#3b82f6', mult:0.8 },
+      { key:'krokodil',      label:'Krokodil',            unit:'db', icon:'🐊', unitLong:'térdfelhúzás (db)',     color:'#10b981', mult:0.6 },
+      { key:'oldalrahajlas', label:'Oldalrahajlás',       unit:'db', icon:'↔️', unitLong:'ismétlés (db)',         color:'#a855f7', mult:1.2 },
+      { key:'felugras',      label:'Felugrás',            unit:'db', icon:'🚀', unitLong:'ismétlés (db)',         color:'#f43f5e', mult:1.0 },
     ]
   },
   '2026_osz': {
     label: '🍂 2026 Ősz', short: 'Ősz', readonly: false,
     exercises: [
-      { key: 'tigris', label: 'Tigrisből fekvő', unit: 'db', icon: '🐯',
-        unitLong: 'tigris×3 + sima×1', color: '#f97316',
-        calcType: 'tiered',
-        staticLabel: '🐯×3 · sima×1 + szorzó',
-        tiers: [[10,1.0],[20,1.2],[30,1.5],[40,2.0],[Infinity,2.5]],
-        desc: {
-          intro: 'Számítsd ki magad az értéket, majd írd be:\n→ Minden tigrisből fekvőtámasz = <strong>3 pont</strong>\n→ Minden sima fekvőtámasz = <strong>1 pont</strong>',
-          examples: [
-            '20 tigris, 0 sima → 20×3 = <strong>60</strong> → írj be 60-at',
-            '15 tigris + 10 sima → 15×3+10 = <strong>55</strong> → írj be 55-öt',
-            '0 tigris + 30 sima → <strong>30</strong> → írj be 30-at',
-          ],
-          note: 'A beírt értékre automatikusan sávos szorzó kerül:',
-          tiered: true,
-          tiers: [[10,1.0],[20,1.2],[30,1.5],[40,2.0],[Infinity,2.5]]
-        }
-      },
-      { key: 'inga', label: 'Inga futás', unit: 'db', icon: '🏃',
-        unitLong: 'minden irány = 1 pont', color: '#3b82f6', mult: 1.0,
-        staticLabel: 'minden futás = 1 pont',
-        desc: {
-          intro: 'Minden irányba való futás (egyik végponttól a másikig) = <strong>1 pont</strong>. Írd be az összes átfutás számát.',
-          examples: [
-            '15 átfutás → <strong>15 pont</strong>',
-            '30 átfutás → <strong>30 pont</strong>',
-          ],
-          tiered: false
-        }
-      },
-      { key: 'huzodz', label: 'Húzódzkodás megtartás', unit: 'mp', icon: '💪',
-        unitLong: 'lógás×1mp · felhúzva×2mp', color: '#10b981', mult: 1.0,
-        staticLabel: 'lógás×1 · felhúzva×2',
-        desc: {
-          intro: 'Számítsd ki magad, majd írd be az összesített értéket:\n→ Lógásban (kar nyújtva) megtartott másodpercek × <strong>1</strong>\n→ Felhúzott helyzetben megtartott másodpercek × <strong>2</strong>',
-          examples: [
-            '20mp lógás + 10mp felhúzva → 20×1 + 10×2 = <strong>40</strong> → írj be 40-et',
-            '30mp lógás + 0mp felhúzva → <strong>30</strong>',
-            '0mp lógás + 15mp felhúzva → 15×2 = <strong>30</strong>',
-          ],
-          tiered: false
-        }
-      },
-      { key: 'rugasok', label: 'Rúgások (csípő fölé)', unit: 'db', icon: '🦵',
-        unitLong: 'rúgás (db) + sávos szorzó', color: '#a855f7',
-        calcType: 'tiered',
-        staticLabel: 'rúgás×1 + sávos szorzó',
-        tiers: [[10,1.0],[20,1.2],[30,1.5],[40,2.0],[Infinity,2.5]],
-        desc: {
-          intro: 'Minden csípő fölé emelt érvényes rúgás = <strong>1</strong>. Írd be az összes rúgás számát. A számra automatikusan sávos szorzó kerül:',
-          examples: [
-            '10 rúgás → 10×1.0 = <strong>10 pont</strong>',
-            '25 rúgás → 25×1.5 = <strong>37.5 pont</strong>',
-            '45 rúgás → 45×2.5 = <strong>112.5 pont</strong>',
-          ],
-          tiered: true,
-          tiers: [[10,1.0],[20,1.2],[30,1.5],[40,2.0],[Infinity,2.5]]
-        }
-      },
-      { key: 'eses', label: 'Eséstechnika', unit: 'db', icon: '🔄',
-        unitLong: 'sorozat (db) + sávos szorzó', color: '#f43f5e',
-        calcType: 'tiered',
-        staticLabel: 'sorozat×2/3/4 sávtól függ',
-        tiers: [[10,2.0],[20,3.0],[Infinity,4.0]],
-        desc: {
-          intro: 'Írd be a szabályos eséstechnika sorozatok számát. A szorzó a sorozatszámtól függ:',
-          examples: [
-            '8 sorozat → 8×2 = <strong>16 pont</strong> (1–10 sáv)',
-            '15 sorozat → 15×3 = <strong>45 pont</strong> (11–20 sáv)',
-            '22 sorozat → 22×4 = <strong>88 pont</strong> (20+ sáv)',
-          ],
-          tiered: true,
-          tiers: [[10,2.0],[20,3.0],[Infinity,4.0]]
-        }
-      },
+      { key:'tigris',  label:'Tigrisből fekvő',      unit:'db', icon:'🐯',
+        unitLong:'tigris×3 + sima×1 (te számolod)', color:'#f97316',
+        calcType:'tiered', staticLabel:'te számolod → szorzó',
+        tiers:[[30,1.0],[40,1.2],[50,1.4],[60,1.6],[Infinity,1.8]] },
+      { key:'inga',    label:'Inga futás',            unit:'db', icon:'🏃',
+        unitLong:'minden irányváltás = 1 (oda-vissza=2)', color:'#3b82f6',
+        calcType:'tiered', staticLabel:'irányváltás + szorzó',
+        tiers:[[30,1.0],[40,1.2],[Infinity,1.4]] },
+      { key:'huzodz',  label:'Lógás / Húzódzkodás',  unit:'pt', icon:'💪',
+        unitLong:'hajlítva×3mp · nyújtva×1mp (te számolod)', color:'#10b981',
+        mult:1.0, staticLabel:'te számolod → 1:1 pont' },
+      { key:'rugasok', label:'Rúgások (csípő fölé)',  unit:'db', icon:'🦵',
+        unitLong:'minden rúgás = 1', color:'#a855f7',
+        calcType:'tiered', staticLabel:'rúgás + szorzó',
+        tiers:[[40,1.0],[60,1.2],[Infinity,1.5]] },
+      { key:'eses',    label:'Quadropedal Gallop',    unit:'db', icon:'🐾',
+        unitLong:'minden gallop = 1', color:'#f43f5e',
+        calcType:'tiered', staticLabel:'gallop + szorzó',
+        tiers:[[10,2.5],[20,3.5],[Infinity,4.5]] },
     ]
   }
 };
 
 let currentSeason = '2026_osz';
 function getExercises() { return SEASONS[currentSeason].exercises; }
+const GROUP_COLORS = { '7':'#3b82f6', '8':'#10b981', '9':'#f97316' };
 
-const GROUP_COLORS = { '7': '#3b82f6', '8': '#10b981', '9': '#f97316' };
-
-let db = null;
-let allData = [];
-let allRaw = [];
-let allMembers = [];
-let deletedData = [];
-let selectedName = null;
-let selectedOra = null;
-let activeExTab = 0;
-let chartInst = null;
+let db=null, allData=[], allRaw=[], allMembers=[], deletedData=[];
+let selectedName=null, selectedOra=null, activeExTab=0, chartInst=null;
 
 // ===== SCORE =====
 function calcScore(e, seasonKey) {
-  const key = seasonKey || e.season || '2026_osz';
+  const key = seasonKey || e.season || '2026_nyar';
   const exs = SEASONS[key] ? SEASONS[key].exercises : getExercises();
   return +exs.reduce((s, ex) => s + getExScore(e[ex.key] || 0, ex), 0).toFixed(1);
 }
 
 function updateScore() {
   const exs = SEASONS[currentSeason].exercises;
-  let total = 0;
-  let bdRows = [];
-
+  let total = 0, bdRows = [];
   exs.forEach((ex, i) => {
-    const val = parseFloat(document.getElementById('e' + (i+1))?.value) || 0;
+    const val = parseFloat(document.getElementById('e'+(i+1))?.value) || 0;
     const pts = getExScore(val, ex);
     total += pts;
-
-    // Update per-card score
-    const ptsEl = document.getElementById('ep' + (i+1));
+    const ptsEl = document.getElementById('ep'+(i+1));
     if (ptsEl) ptsEl.textContent = val > 0 ? `+${pts} pont` : '';
-
-    // Update mult badge for tiered
-    const badgeEl = document.getElementById('em' + (i+1));
+    const badgeEl = document.getElementById('em'+(i+1));
     if (badgeEl && ex.calcType === 'tiered') {
       if (val > 0) {
-        const m = getTieredMult(val, ex);
-        badgeEl.textContent = `×${m} szorzó aktív`;
+        badgeEl.textContent = `×${getTieredMult(val,ex)} szorzó aktív`;
         badgeEl.classList.add('active');
       } else {
-        badgeEl.textContent = ex.staticLabel || '×? (adj meg értéket)';
+        badgeEl.textContent = ex.staticLabel || '×?';
         badgeEl.classList.remove('active');
       }
     }
-
     if (val > 0) {
-      const ml = ex.calcType === 'tiered' ? `×${getTieredMult(val, ex)}` : `×${ex.mult}`;
+      const ml = ex.calcType === 'tiered' ? `×${getTieredMult(val,ex)}` : `×${ex.mult}`;
       bdRows.push(`<div class="bd-row"><span>${ex.icon} ${ex.label}: ${val} ${ml}</span><span class="bd-pts">+${pts}</span></div>`);
     }
   });
-
-  total = +total.toFixed(1);
-  document.getElementById('liveScore').textContent = total;
+  document.getElementById('liveScore').textContent = +total.toFixed(1);
   const bdEl = document.getElementById('scoreBreakdown');
-  if (bdEl) bdEl.innerHTML = bdRows.length ? bdRows.join('') : '';
+  if (bdEl) bdEl.innerHTML = bdRows.join('');
 }
 
 // ===== EXERCISE GRID =====
 function renderExerciseGrid() {
   const season = SEASONS[currentSeason];
   const exs = season.exercises;
-  const isReadonly = season.readonly;
-
   document.getElementById('exGrid').innerHTML = exs.map((ex, i) => {
     const isTiered = ex.calcType === 'tiered';
-    return `
-    <div class="ex-card">
+    return `<div class="ex-card">
       <div class="ex-card-header">
         <span class="ex-icon">${ex.icon}</span>
-        <button class="info-btn" onclick="openInfo(${i})" title="Leírás / szabályok">ℹ️</button>
+        <button class="info-btn" onclick="goToRules(${i})" title="Játékszabály">ℹ️</button>
       </div>
       <div class="ex-name">${ex.label}</div>
       <span class="ex-unit">${ex.unitLong}</span>
-      ${isTiered
-        ? `<span class="mult-badge" id="em${i+1}">${ex.staticLabel || '×? (adj meg értéket)'}</span>`
-        : `<span class="mult-badge active">${ex.staticLabel || '×'+ex.mult+' szorzó'}</span>`
-      }
+      <span class="mult-badge${isTiered ? '' : ' active'}" id="em${i+1}">${ex.staticLabel || (isTiered ? '×?' : '×'+ex.mult)}</span>
       <input type="number" id="e${i+1}" class="num-input" placeholder="–" min="0"
-        inputmode="numeric" oninput="updateScore()" ${isReadonly ? 'disabled' : ''}>
+        inputmode="numeric" oninput="updateScore()" ${season.readonly ? 'disabled' : ''}>
       <div class="ex-pts" id="ep${i+1}"></div>
     </div>`;
   }).join('');
-
   updateScore();
 }
 
-// ===== INFO MODAL =====
-function openInfo(exIdx) {
-  const ex = getExercises()[exIdx];
-  if (!ex || !ex.desc) return;
-  const d = ex.desc;
-
-  document.getElementById('infoTitle').textContent = `${ex.icon} ${ex.label}`;
-  document.getElementById('infoSubtitle').textContent = ex.unitLong;
-
-  let body = '';
-
-  if (d.intro) {
-    body += `<div class="info-section-label">Hogyan számold ki?</div>
-      <div class="info-text">${d.intro}</div>`;
-  }
-
-  if (d.examples && d.examples.length) {
-    body += `<div class="info-section-label">Példák</div>`;
-    d.examples.forEach(ex => {
-      body += `<div class="info-example">${ex}</div>`;
-    });
-  }
-
-  if (d.tiered && d.tiers) {
-    const exIdx2 = getExercises().indexOf(ex);
-    const currentVal = parseFloat(document.getElementById('e' + (exIdx2+1))?.value) || 0;
-    const cm = getTieredMult(currentVal, ex);
-
-    // Build table rows from tiers
-    let prevMax = 0;
-    const tableRows = d.tiers.map(([max, m]) => {
-      const lo = prevMax + 1;
-      const hi = max === Infinity ? '∞' : max;
-      const hiNum = max === Infinity ? (prevMax + 20) : max;
-      const isActive = currentVal > prevMax && (max === Infinity || currentVal <= max);
-      prevMax = max === Infinity ? prevMax : max;
-      return `<tr class="${isActive ? 'highlight' : ''}">
-        <td>${lo}–${hi}</td>
-        <td>×${m}</td>
-        <td>${+(hiNum * m).toFixed(0)}${max===Infinity?'+':''} pont</td>
-      </tr>`;
-    }).join('');
-
-    body += `<div class="info-section-label">Sávos szorzótáblázat</div>
-    <table class="mult-table">
-      <thead><tr><th>Beírt érték</th><th>Szorzó</th><th>Max pont a sávban</th></tr></thead>
-      <tbody>${tableRows}</tbody>
-    </table>`;
-
-    if (currentVal > 0) {
-      body += `<div class="info-example" style="margin-top:12px">
-        Mostani értéked: <strong>${currentVal}</strong> → szorzó <strong>×${cm}</strong> → <strong>${+(currentVal * cm).toFixed(1)} pont</strong>
-      </div>`;
-    }
-  }
-
-  if (d.note && !d.tiered) {
-    body += `<div class="info-text" style="margin-top:12px;color:var(--muted)">${d.note}</div>`;
-  }
-
-  document.getElementById('infoBody').innerHTML = body;
-  document.getElementById('infoOverlay').classList.add('open');
-}
-
-function closeInfo() {
-  document.getElementById('infoOverlay').classList.remove('open');
+// ===== NAVIGATE TO GAME RULES =====
+function goToRules(exIdx) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('pageSzabaly').classList.add('active');
+  document.querySelectorAll('.nav-btn')[1].classList.add('active');
+  setTimeout(() => {
+    const el = document.getElementById('szabaly-' + exIdx);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 60);
 }
 
 // ===== SEASON SWITCH =====
@@ -996,16 +852,13 @@ async function loadAll() {
   const all = wAll.data || [];
   allRaw = all.filter(e => !e.deleted_at);
   deletedData = all.filter(e => !!e.deleted_at).reverse();
-  if (m.error) console.warn(m.error);
-  if (wAll.error) console.warn(wAll.error);
   allData = allRaw.filter(e => (e.season || '2026_nyar') === currentSeason);
   updateUI();
 }
 
 function updateUI() {
-  const seasonLabel = SEASONS[currentSeason].label;
   document.getElementById('headerSub').textContent =
-    `${seasonLabel} · ${getPersonNames().length} sportoló · ${allData.length} edzés`;
+    `${SEASONS[currentSeason].label} · ${getPersonNames().length} sportoló · ${allData.length} edzés`;
   renderExerciseGrid();
   renderNameChips();
   updateSelects();
@@ -1020,34 +873,26 @@ function updateSelects() {
   const persons = getPersonNames();
   const opts = persons.map(p => `<option value="${esc(p)}">${esc(p)}</option>`).join('');
   ['chartPerson'].forEach(id => {
-    const el = document.getElementById(id);
-    const cur = el.value;
+    const el = document.getElementById(id); const cur = el.value;
     el.innerHTML = '<option value="">— Válassz személyt —</option>' + opts;
     if (cur) el.value = cur;
   });
   ['histPerson'].forEach(id => {
-    const el = document.getElementById(id);
-    const cur = el.value;
+    const el = document.getElementById(id); const cur = el.value;
     el.innerHTML = '<option value="">— Mindenki —</option>' + opts;
     if (cur) el.value = cur;
   });
 }
 
-function esc(s) {
-  return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 // ===== NAME CHIPS =====
 function renderNameChips() {
-  const persons = getPersonNames();
-  document.getElementById('nameChips').innerHTML = persons.map(name =>
-    `<button class="name-chip${selectedName === name ? ' selected' : ''}"
-      data-person="${esc(name)}" onclick="selectNameFromChip(this)">${esc(name)}</button>`
+  document.getElementById('nameChips').innerHTML = getPersonNames().map(name =>
+    `<button class="name-chip${selectedName===name?' selected':''}" data-person="${esc(name)}" onclick="selectNameFromChip(this)">${esc(name)}</button>`
   ).join('');
 }
-
 function selectNameFromChip(btn) { selectName(btn.dataset.person); }
-
 function selectName(name) {
   selectedName = name;
   const row = document.getElementById('newNameRow');
@@ -1057,7 +902,7 @@ function selectName(name) {
     btn.classList.toggle('selected', isSel);
     btn.style.background  = isSel ? '#10b981' : '';
     btn.style.borderColor = isSel ? '#10b981' : '';
-    btn.style.color       = isSel ? '#fff'    : '';
+    btn.style.color       = isSel ? '#fff' : '';
     btn.style.boxShadow   = isSel ? '0 0 14px rgba(16,185,129,0.5)' : '';
   });
   const savedOra = localStorage.getItem('ora_' + name);
@@ -1069,9 +914,7 @@ function selectName(name) {
     if (member && member.orend) selectSlot(member.orend);
   }
 }
-
 function toggleNewName() { document.getElementById('newNameRow').classList.toggle('open'); }
-
 function confirmNewPerson() {
   const val = document.getElementById('newPersonInput').value.trim();
   if (!val) return;
@@ -1079,12 +922,11 @@ function confirmNewPerson() {
   document.getElementById('newPersonInput').value = '';
   document.getElementById('newNameRow').classList.remove('open');
   if (!allMembers.find(m => m.name === val)) {
-    allMembers.push({ id: 'tmp_'+Date.now(), name: val, orend: selectedOra });
-    db.from('members').insert([{ name: val, orend: selectedOra || null }]).then();
+    allMembers.push({ id:'tmp_'+Date.now(), name:val, orend:selectedOra });
+    db.from('members').insert([{ name:val, orend:selectedOra||null }]).then();
     allMembers.sort((a,b) => a.name.localeCompare(b.name,'hu'));
   }
-  renderNameChips();
-  updateSelects();
+  renderNameChips(); updateSelects();
   showToast(`✅ ${val} kiválasztva!`);
 }
 
@@ -1103,43 +945,34 @@ function selectSlot(ora) {
 
 // ===== SAVE =====
 async function saveEntry() {
-  if (!selectedName) { showToast('⚠️ Válaszd ki a neved!', '#ea580c'); return; }
-  if (SEASONS[currentSeason].readonly) { showToast('⚠️ Ez az archív szezon.', '#ea580c'); return; }
-
+  if (!selectedName) { showToast('⚠️ Válaszd ki a neved!','#ea580c'); return; }
+  if (SEASONS[currentSeason].readonly) { showToast('⚠️ Ez az archív szezon.','#ea580c'); return; }
   const exs = SEASONS[currentSeason].exercises;
-  const vals = exs.map((ex, i) => parseInt(document.getElementById('e' + (i+1)).value) || null);
-  if (vals.every(v => !v)) { showToast('⚠️ Legalább egy eredményt adj meg!', '#ea580c'); return; }
-
+  const vals = exs.map((ex,i) => parseInt(document.getElementById('e'+(i+1)).value)||null);
+  if (vals.every(v => !v)) { showToast('⚠️ Legalább egy eredményt adj meg!','#ea580c'); return; }
   const entryFields = {};
-  exs.forEach((ex, i) => { entryFields[ex.key] = vals[i]; });
+  exs.forEach((ex,i) => { entryFields[ex.key] = vals[i]; });
   const score = calcScore(entryFields, currentSeason);
-
   const btn = document.getElementById('saveBtn');
   btn.disabled = true; btn.textContent = '⏳ Mentés...';
-
   try {
-    const payload = { name: selectedName, orend: selectedOra || null, season: currentSeason, ...entryFields };
+    const payload = { name:selectedName, orend:selectedOra||null, season:currentSeason, ...entryFields };
     let { data, error } = await db.from('workouts').insert([payload]).select();
     if (error && error.message && error.message.includes('orend')) {
       const { orend, ...p2 } = payload;
       ({ data, error } = await db.from('workouts').insert([p2]).select());
     }
     if (error) throw error;
-
     allRaw.push(data[0]);
-    allData = allRaw.filter(e => !e.deleted_at && (e.season || '2026_nyar') === currentSeason);
+    allData = allRaw.filter(e => !e.deleted_at && (e.season||'2026_nyar') === currentSeason);
     allData.sort((a,b) => new Date(a.created_at) - new Date(b.created_at));
-    exs.forEach((ex, i) => { const el = document.getElementById('e'+(i+1)); if(el) el.value = ''; });
+    exs.forEach((ex,i) => { const el=document.getElementById('e'+(i+1)); if(el) el.value=''; });
     document.getElementById('liveScore').textContent = '0';
     document.getElementById('scoreBreakdown').innerHTML = '';
-
     showToast(`🎉 Mentve! ${score} pont`);
     updateUI();
-  } catch(err) {
-    showToast('❌ ' + err.message, '#dc2626');
-  } finally {
-    btn.disabled = false; btn.textContent = '💾 Mentés';
-  }
+  } catch(err) { showToast('❌ '+err.message,'#dc2626'); }
+  finally { btn.disabled=false; btn.textContent='💾 Mentés'; }
 }
 
 // ===== DELETE / RESTORE =====
@@ -1147,308 +980,231 @@ async function deleteEntry(id) {
   if (!confirm('⚠️ Biztosan törlöd ezt az eredményt?\n\nGaál Attila vissza tudja állítani a beállításokban.')) return;
   try {
     const now = new Date().toISOString();
-    const { error } = await db.from('workouts').update({ deleted_at: now }).eq('id', id);
+    const { error } = await db.from('workouts').update({ deleted_at:now }).eq('id',id);
     if (error) {
-      const { error: err2 } = await db.from('workouts').delete().eq('id', id);
+      const { error:err2 } = await db.from('workouts').delete().eq('id',id);
       if (err2) throw err2;
       allData = allData.filter(e => e.id !== id);
     } else {
-      const entry = allData.find(e => e.id === id);
-      if (entry) { entry.deleted_at = now; deletedData.unshift(entry); }
+      const entry = allData.find(e => e.id===id);
+      if (entry) { entry.deleted_at=now; deletedData.unshift(entry); }
       allData = allData.filter(e => e.id !== id);
     }
-    showToast('🗑️ Törölve', '#666');
-    updateUI();
-  } catch(err) { showToast('❌ ' + err.message, '#dc2626'); }
+    showToast('🗑️ Törölve','#666'); updateUI();
+  } catch(err) { showToast('❌ '+err.message,'#dc2626'); }
 }
-
 async function restoreEntry(id) {
   if (!confirm('Visszaállítod ezt az eredményt?')) return;
   try {
-    const { error } = await db.from('workouts').update({ deleted_at: null }).eq('id', id);
+    const { error } = await db.from('workouts').update({ deleted_at:null }).eq('id',id);
     if (error) throw error;
-    const entry = deletedData.find(e => e.id === id);
+    const entry = deletedData.find(e => e.id===id);
     if (entry) {
-      entry.deleted_at = null;
-      allData.push(entry);
-      allData.sort((a,b) => new Date(a.created_at) - new Date(b.created_at));
-      deletedData = deletedData.filter(e => e.id !== id);
+      entry.deleted_at=null; allData.push(entry);
+      allData.sort((a,b) => new Date(a.created_at)-new Date(b.created_at));
+      deletedData = deletedData.filter(e => e.id!==id);
     }
-    renderMembersList();
-    updateUI();
-    showToast('✅ Visszaállítva!');
-  } catch(err) { showToast('❌ ' + err.message, '#dc2626'); }
+    renderMembersList(); updateUI(); showToast('✅ Visszaállítva!');
+  } catch(err) { showToast('❌ '+err.message,'#dc2626'); }
 }
 
 // ===== NAV =====
 function switchPage(name, btn) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('page' + name).classList.add('active');
+  document.getElementById('page'+name).classList.add('active');
   btn.classList.add('active');
   renderActivePage();
 }
-
 function renderActivePage() {
   const id = document.querySelector('.page.active')?.id;
-  if (id === 'pageVerseny') renderVerseny();
-  else if (id === 'pageFejlodes') renderChartPage();
-  else if (id === 'pageEloz') renderHistory();
-  else if (id === 'pageBeiras') renderNameChips();
+  if (id==='pageVerseny') renderVerseny();
+  else if (id==='pageFejlodes') renderChartPage();
+  else if (id==='pageEloz') renderHistory();
+  else if (id==='pageBeiras') renderNameChips();
 }
 
 // ===== VERSENY =====
 function monday() {
-  const n = new Date(), day = n.getDay();
-  const m = new Date(n);
-  m.setDate(n.getDate() + (day === 0 ? -6 : 1 - day));
-  m.setHours(0,0,0,0); return m;
+  const n=new Date(), day=n.getDay(), m=new Date(n);
+  m.setDate(n.getDate()+(day===0?-6:1-day)); m.setHours(0,0,0,0); return m;
 }
-
 function renderVerseny() {
   const cont = document.getElementById('versenyContent');
-  if (!allData.length) { cont.innerHTML = '<div class="empty">Még nincs adat. Írjátok be az első eredményt! 💪</div>'; return; }
-
-  const mon = monday();
-  const slots = ['7','8','9'];
+  if (!allData.length) { cont.innerHTML='<div class="empty">Még nincs adat. Írjátok be az első eredményt! 💪</div>'; return; }
+  const mon=monday(), slots=['7','8','9'];
   const weekC={}, totalC={}, bestS={};
   slots.forEach(s => { weekC[s]=0; totalC[s]=0; bestS[s]=0; });
-
   allData.forEach(e => {
     if (!e.orend) return;
-    totalC[e.orend] = (totalC[e.orend]||0) + 1;
-    if (new Date(e.created_at) >= mon) weekC[e.orend] = (weekC[e.orend]||0) + 1;
-    const sc = calcScore(e);
-    if (sc > (bestS[e.orend]||0)) bestS[e.orend] = sc;
+    totalC[e.orend]=(totalC[e.orend]||0)+1;
+    if (new Date(e.created_at)>=mon) weekC[e.orend]=(weekC[e.orend]||0)+1;
+    const sc=calcScore(e);
+    if (sc>(bestS[e.orend]||0)) bestS[e.orend]=sc;
   });
-
-  const maxW = Math.max(...slots.map(s => weekC[s]), 1);
-  const maxT = Math.max(...slots.map(s => totalC[s]), 1);
-  const weekWin  = slots.reduce((a,b) => weekC[a] >= weekC[b] ? a : b);
-  const totalWin = slots.reduce((a,b) => totalC[a] >= totalC[b] ? a : b);
-
-  const byGroup = {};
-  slots.forEach(s => byGroup[s] = []);
+  const maxW=Math.max(...slots.map(s=>weekC[s]),1), maxT=Math.max(...slots.map(s=>totalC[s]),1);
+  const weekWin=slots.reduce((a,b)=>weekC[a]>=weekC[b]?a:b);
+  const totalWin=slots.reduce((a,b)=>totalC[a]>=totalC[b]?a:b);
+  const byGroup={};
+  slots.forEach(s=>byGroup[s]=[]);
   allMembers.forEach(m => {
-    if (m.orend && byGroup[m.orend]) {
-      const active = allData.some(e => e.name===m.name && new Date(e.created_at)>=mon);
-      byGroup[m.orend].push({ name: m.name, active });
+    if (m.orend&&byGroup[m.orend]) {
+      const active=allData.some(e=>e.name===m.name&&new Date(e.created_at)>=mon);
+      byGroup[m.orend].push({name:m.name,active});
     }
   });
-
-  cont.innerHTML = `
+  cont.innerHTML=`
     <div class="card">
       <div class="card-title">🏆 Ezen a héten</div>
       <div class="group-grid">
-        ${slots.map(s => {
-          const c=weekC[s],col=GROUP_COLORS[s],win=s===weekWin&&c>0;
+        ${slots.map(s=>{const c=weekC[s],col=GROUP_COLORS[s],win=s===weekWin&&c>0;
           return `<div class="group-box${win?' winner':''}" style="background:${col}15;border-color:${col}33">
             <span class="crown">${win?'👑':''}</span>
             <div class="group-time-label" style="color:${col}">${s}:00</div>
             <div class="group-time-sub">óra</div>
             <div class="group-count" style="color:${col}">${c}</div>
-            <div class="group-count-sub">edzés</div>
-          </div>`;
-        }).join('')}
+            <div class="group-count-sub">edzés</div></div>`;}).join('')}
       </div>
-      ${slots.map(s => {
-        const c=weekC[s],col=GROUP_COLORS[s];
+      ${slots.map(s=>{const c=weekC[s],col=GROUP_COLORS[s];
         return `<div class="bar-row">
           <div class="bar-label"><span style="color:${col}">${s}:00 óra</span><span>${c} edzés</span></div>
           <div class="bar-track"><div class="bar-fill" style="width:${Math.round(c/maxW*100)}%;background:${col}"></div></div>
-        </div>`;
-      }).join('')}
+        </div>`;}).join('')}
     </div>
     <div class="card">
       <div class="card-title">📊 Összesített verseny</div>
-      ${slots.map(s => {
-        const c=totalC[s],col=GROUP_COLORS[s],win=s===totalWin&&c>0;
+      ${slots.map(s=>{const c=totalC[s],col=GROUP_COLORS[s],win=s===totalWin&&c>0;
         return `<div class="bar-row">
-          <div class="bar-label">
-            <span style="color:${col}">${s}:00 óra${win?' 👑':''}</span>
-            <span>${c} edzés · legjobb: ${bestS[s]} pont</span>
-          </div>
+          <div class="bar-label"><span style="color:${col}">${s}:00 óra${win?' 👑':''}</span>
+            <span>${c} edzés · legjobb: ${bestS[s]} pont</span></div>
           <div class="bar-track"><div class="bar-fill" style="width:${Math.round(c/maxT*100)}%;background:${col}"></div></div>
-        </div>`;
-      }).join('')}
+        </div>`;}).join('')}
     </div>
-    ${slots.map(s => {
-      const members=byGroup[s];
-      if(!members.length) return '';
-      const col=GROUP_COLORS[s];
+    ${slots.map(s=>{const members=byGroup[s];if(!members.length)return'';const col=GROUP_COLORS[s];
       return `<div class="card">
         <div class="card-title" style="color:${col}">${s}:00 óra csapata</div>
         <div class="member-tags">
           ${members.map(m=>`<span class="member-tag${m.active?' active':''}">${esc(m.name)}${m.active?' ✓':''}</span>`).join('')}
-        </div>
-      </div>`;
-    }).join('')}`;
+        </div></div>`;}).join('')}`;
 }
 
 // ===== FEJLŐDÉS =====
 function renderChartPage() {
   const tabsEl = document.getElementById('exTabs');
-  const tabs = [...getExercises().map((ex,i) =>
+  const tabs=[...getExercises().map((ex,i)=>
     `<button class="ex-tab${i===activeExTab?' active':''}" onclick="setExTab(${i})">${ex.icon} ${ex.label}</button>`
   ), `<button class="ex-tab${activeExTab===5?' active':''}" onclick="setExTab(5)">⭐ Pontszám</button>`];
-  tabsEl.innerHTML = tabs.join('');
-
-  const person = document.getElementById('chartPerson').value;
-  if (chartInst) { chartInst.destroy(); chartInst = null; }
-  document.getElementById('miniStats').innerHTML = '';
+  tabsEl.innerHTML=tabs.join('');
+  const person=document.getElementById('chartPerson').value;
+  if (chartInst) { chartInst.destroy(); chartInst=null; }
+  document.getElementById('miniStats').innerHTML='';
   if (!person) return;
-
-  let entries, values, label, color;
-
-  if (activeExTab === 5) {
-    entries = allData.filter(e => e.name===person).sort((a,b)=>new Date(a.created_at)-new Date(b.created_at));
-    values = entries.map(e => calcScore(e));
-    label = 'Pontszám'; color = '#facc15';
+  let entries,values,label,color;
+  if (activeExTab===5) {
+    entries=allData.filter(e=>e.name===person).sort((a,b)=>new Date(a.created_at)-new Date(b.created_at));
+    values=entries.map(e=>calcScore(e)); label='Pontszám'; color='#facc15';
   } else {
-    const ex = getExercises()[activeExTab];
-    entries = allData.filter(e=>e.name===person&&e[ex.key]!=null).sort((a,b)=>new Date(a.created_at)-new Date(b.created_at));
-    values = entries.map(e => e[ex.key]);
-    label = ex.label; color = ex.color;
+    const ex=getExercises()[activeExTab];
+    entries=allData.filter(e=>e.name===person&&e[ex.key]!=null).sort((a,b)=>new Date(a.created_at)-new Date(b.created_at));
+    values=entries.map(e=>e[ex.key]); label=ex.label; color=ex.color;
   }
-
   if (!entries.length) {
-    document.getElementById('miniStats').innerHTML = '<div class="empty" style="grid-column:span 4">Nincs adat.</div>';
-    chartInst = new Chart(document.getElementById('mainChart'), {
-      type:'line', data:{labels:[],datasets:[]},
-      options:{plugins:{legend:{display:false}},scales:{x:{display:false},y:{display:false}}}
-    });
+    document.getElementById('miniStats').innerHTML='<div class="empty" style="grid-column:span 4">Nincs adat.</div>';
+    chartInst=new Chart(document.getElementById('mainChart'),{type:'line',data:{labels:[],datasets:[]},options:{plugins:{legend:{display:false}},scales:{x:{display:false},y:{display:false}}}});
     return;
   }
-
-  const labels = entries.map(e=>new Date(e.created_at).toLocaleDateString('hu-HU',{month:'short',day:'numeric'}));
-  chartInst = new Chart(document.getElementById('mainChart'), {
+  const labels=entries.map(e=>new Date(e.created_at).toLocaleDateString('hu-HU',{month:'short',day:'numeric'}));
+  chartInst=new Chart(document.getElementById('mainChart'),{
     type:'line',
     data:{labels,datasets:[{label,data:values,borderColor:color,backgroundColor:color+'22',
       pointBackgroundColor:color,pointRadius:5,pointHoverRadius:8,tension:0.35,fill:true}]},
-    options:{
-      responsive:true,maintainAspectRatio:false,
+    options:{responsive:true,maintainAspectRatio:false,
       plugins:{legend:{display:false},tooltip:{backgroundColor:'#1a1a2e',borderColor:'#3a3a5a',borderWidth:1,
-        titleColor:color,bodyColor:'#e0e0e0',
-        callbacks:{label:ctx=>`${ctx.parsed.y} ${activeExTab===5?'pont':getExercises()[activeExTab]?.unit||''}`}}},
-      scales:{x:{ticks:{color:'#888',font:{size:10}},grid:{color:'#1e1e34'}},
-              y:{ticks:{color:'#888',font:{size:10}},grid:{color:'#1e1e34'},beginAtZero:true}}
-    }
+        titleColor:color,bodyColor:'#e0e0e0',callbacks:{label:ctx=>`${ctx.parsed.y} ${activeExTab===5?'pont':getExercises()[activeExTab]?.unit||''}`}}},
+      scales:{x:{ticks:{color:'#888',font:{size:10}},grid:{color:'#1e1e34'}},y:{ticks:{color:'#888',font:{size:10}},grid:{color:'#1e1e34'},beginAtZero:true}}}
   });
-
   const first=values[0],last=values[values.length-1],best=Math.max(...values);
   const diff=+(last-first).toFixed(1),sign=diff>=0?'+':'';
-  document.getElementById('miniStats').innerHTML = `
+  document.getElementById('miniStats').innerHTML=`
     <div class="mini-stat"><div class="val">${first}</div><div class="lbl">Első</div></div>
     <div class="mini-stat"><div class="val">${last}</div><div class="lbl">Legutóbbi</div></div>
     <div class="mini-stat"><div class="val">${best}</div><div class="lbl">Legjobb</div></div>
     <div class="mini-stat"><div class="val" style="color:${diff>=0?'#10b981':'#f87171'}">${sign}${diff}</div><div class="lbl">Fejlődés</div></div>`;
 }
-
 function setExTab(i) { activeExTab=i; renderChartPage(); }
 
 // ===== ELŐZMÉNYEK =====
-const ADMIN_NAME = 'Gaál Attila';
+const ADMIN_NAME='Gaál Attila';
 function canDelete(entryName) { return selectedName===entryName||selectedName===ADMIN_NAME; }
-
 function renderHistory() {
-  const pf=document.getElementById('histPerson').value;
-  const of=document.getElementById('histOra').value;
+  const pf=document.getElementById('histPerson').value, of=document.getElementById('histOra').value;
   let list=[...allData].sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
   if(pf) list=list.filter(e=>e.name===pf);
   if(of) list=list.filter(e=>e.orend===of);
-
   const cont=document.getElementById('historyContent');
   if(!list.length){cont.innerHTML='<div class="empty">Nincs találat.</div>';return;}
-
   cont.innerHTML=list.map(e=>{
-    const sc=calcScore(e);
-    const d=new Date(e.created_at);
+    const sc=calcScore(e), d=new Date(e.created_at);
     const ds=d.toLocaleDateString('hu-HU',{month:'short',day:'numeric'})+' '+d.toLocaleTimeString('hu-HU',{hour:'2-digit',minute:'2-digit'});
     const col=GROUP_COLORS[e.orend]||'var(--muted)';
     const deletable=canDelete(e.name);
     const seasonKey=e.season||'2026_nyar';
     const exs=SEASONS[seasonKey]?SEASONS[seasonKey].exercises:getExercises();
-    const pills=exs.map(ex=>{
-      const v=e[ex.key];
-      const pts=v!=null?getExScore(v,ex):null;
-      return `<div class="pill"><div class="p-icon">${ex.icon}</div><div class="p-val">${v??'—'}</div><div class="p-unit">${pts!=null?pts+'pt':''}</div></div>`;
-    }).join('');
+    const pills=exs.map(ex=>{const v=e[ex.key];const pts=v!=null?getExScore(v,ex):null;
+      return `<div class="pill"><div class="p-icon">${ex.icon}</div><div class="p-val">${v??'—'}</div><div class="p-unit">${pts!=null?pts+'pt':''}</div></div>`;}).join('');
     return `<div class="entry-card">
       <div class="entry-top">
-        <div>
-          <div class="entry-name">${esc(e.name)}</div>
-          <div class="entry-meta">${ds}${e.orend?` · <span style="color:${col}">${e.orend}:00 óra</span>`:''}</div>
-        </div>
+        <div><div class="entry-name">${esc(e.name)}</div>
+          <div class="entry-meta">${ds}${e.orend?` · <span style="color:${col}">${e.orend}:00 óra</span>`:''}</div></div>
         <div class="entry-right">
           <div class="entry-score-num">${sc}</div>
           <div class="entry-score-lbl">pont</div>
           ${deletable?`<button class="del-btn" onclick="deleteEntry(${e.id})">✕</button>`:''}
         </div>
       </div>
-      <div class="entry-pills">${pills}</div>
-    </div>`;
+      <div class="entry-pills">${pills}</div></div>`;
   }).join('');
 }
 
 // ===== SETTINGS =====
 function openSettings() { document.getElementById('settingsOverlay').classList.add('open'); renderMembersList(); }
 function closeSettings() { document.getElementById('settingsOverlay').classList.remove('open'); }
-
 function renderMembersList() {
   const cont=document.getElementById('membersList');
   if(!allMembers.length){cont.innerHTML='<div class="empty">Még nincs tag!</div>';return;}
-  cont.innerHTML=allMembers.map(m=>{
-    const col=GROUP_COLORS[m.orend]||'var(--muted)';
-    return `<div class="m-row">
-      <div class="m-name">${esc(m.name)}</div>
+  cont.innerHTML=allMembers.map(m=>{const col=GROUP_COLORS[m.orend]||'var(--muted)';
+    return `<div class="m-row"><div class="m-name">${esc(m.name)}</div>
       ${m.orend?`<div class="m-ora" style="color:${col};background:${col}20">${m.orend}:00 óra</div>`:''}
-      <button class="m-del" onclick="deleteMember(${JSON.stringify(m.id)})">🗑️</button>
-    </div>`;
-  }).join('');
-
+      <button class="m-del" onclick="deleteMember(${JSON.stringify(m.id)})">🗑️</button></div>`;}).join('');
   const restoreSection=document.getElementById('restoreSection');
   if(!deletedData.length){restoreSection.innerHTML='';return;}
-  restoreSection.innerHTML=`
-    <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
-      <div style="font-size:0.73rem;font-weight:700;color:#f87171;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">
-        🔄 Törölt edzések (visszaállítható)
-      </div>
-      ${deletedData.slice(0,20).map(e=>{
-        const d=new Date(e.created_at);
-        const ds=d.toLocaleDateString('hu-HU',{month:'short',day:'numeric'});
-        const sc=calcScore(e);
-        return `<div class="m-row">
-          <div class="m-name" style="font-size:0.85rem">${esc(e.name)}<br>
-            <span style="font-size:0.7rem;color:var(--muted)">${ds} · ${sc} pont</span></div>
-          <button class="small-btn" style="font-size:0.75rem;padding:6px 10px;background:#10b981" onclick="restoreEntry(${e.id})">↩ Vissza</button>
-        </div>`;
-      }).join('')}
+  restoreSection.innerHTML=`<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
+    <div style="font-size:0.73rem;font-weight:700;color:#f87171;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px">🔄 Törölt edzések (visszaállítható)</div>
+    ${deletedData.slice(0,20).map(e=>{const d=new Date(e.created_at);
+      return `<div class="m-row"><div class="m-name" style="font-size:0.85rem">${esc(e.name)}<br>
+        <span style="font-size:0.7rem;color:var(--muted)">${d.toLocaleDateString('hu-HU',{month:'short',day:'numeric'})} · ${calcScore(e)} pont</span></div>
+        <button class="small-btn" style="font-size:0.75rem;padding:6px 10px;background:#10b981" onclick="restoreEntry(${e.id})">↩ Vissza</button></div>`;}).join('')}
     </div>`;
 }
-
 async function addMember() {
-  const name=document.getElementById('newMemberName').value.trim();
-  const ora=document.getElementById('newMemberOra').value;
+  const name=document.getElementById('newMemberName').value.trim(), ora=document.getElementById('newMemberOra').value;
   if(!name){showToast('⚠️ Add meg a nevet!','#ea580c');return;}
   try {
     const{data,error}=await db.from('members').insert([{name,orend:ora||null}]).select();
     if(error) throw error;
-    allMembers.push(data[0]);
-    allMembers.sort((a,b)=>a.name.localeCompare(b.name,'hu'));
-    document.getElementById('newMemberName').value='';
-    document.getElementById('newMemberOra').value='';
-    renderMembersList();renderNameChips();updateSelects();
+    allMembers.push(data[0]); allMembers.sort((a,b)=>a.name.localeCompare(b.name,'hu'));
+    document.getElementById('newMemberName').value=''; document.getElementById('newMemberOra').value='';
+    renderMembersList(); renderNameChips(); updateSelects();
     showToast(`✅ ${name} hozzáadva!`);
   } catch(err){showToast('❌ '+err.message,'#dc2626');}
 }
-
 async function deleteMember(id) {
   if(!confirm('Törlöd ezt a tagot?')) return;
   try {
     const{error}=await db.from('members').delete().eq('id',id);
     if(error) throw error;
     allMembers=allMembers.filter(m=>m.id!==id);
-    renderMembersList();renderNameChips();
+    renderMembersList(); renderNameChips();
     showToast('🗑️ Törölve','#666');
   } catch(err){showToast('❌ '+err.message,'#dc2626');}
 }
@@ -1456,9 +1212,8 @@ async function deleteMember(id) {
 // ===== TOAST =====
 function showToast(msg,color='#16a34a') {
   const el=document.getElementById('toast');
-  el.textContent=msg;el.style.background=color;
-  el.classList.add('show');
-  clearTimeout(el._t);
+  el.textContent=msg; el.style.background=color;
+  el.classList.add('show'); clearTimeout(el._t);
   el._t=setTimeout(()=>el.classList.remove('show'),2800);
 }
 </script>
