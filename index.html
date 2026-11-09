@@ -375,12 +375,114 @@ header p { font-size: 0.73rem; color: var(--muted); margin-top: 2px; }
 </header>
 
 <!-- SEASON BANNER -->
-<div style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-bottom:1px solid #2a2a4a;padding:8px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;">
-  <span id="seasonLabel" style="font-weight:700;font-size:0.9rem;color:#facc15;">🍂 2026 Ősz</span>
-  <button id="seasonToggleBtn" onclick="switchSeason('2026_nyar')"
-    style="background:none;border:1px solid #3b82f6;color:#3b82f6;padding:5px 12px;border-radius:20px;font-size:0.75rem;font-weight:700;cursor:pointer;">
-    📅 Nyári eredmények
-  </button>
+<div style="background:linear-gradient(135deg,#0f172a,#1a1a2e);border-bottom:1px solid #2a2a4a;padding:10px 14px;">
+  <div style="display:flex;gap:6px;">
+    <button id="seasonBtn_2026_nyar" onclick="switchSeason('2026_nyar')"
+      style="flex:1;background:none;border:1px solid rgba(255,255,255,0.12);color:#64748b;padding:7px 0;border-radius:20px;font-size:0.74rem;font-weight:700;cursor:pointer;transition:all 0.2s;">
+      ☀️ Nyár
+    </button>
+    <button id="seasonBtn_2026_osz" onclick="switchSeason('2026_osz')"
+      style="flex:1;background:none;border:1px solid rgba(255,255,255,0.12);color:#64748b;padding:7px 0;border-radius:20px;font-size:0.74rem;font-weight:700;cursor:pointer;transition:all 0.2s;">
+      🍂 Ősz
+    </button>
+    <button id="seasonBtn_2026_tel" onclick="switchSeason('2026_tel')"
+      style="flex:1;background:rgba(96,165,250,0.15);border:1px solid #60a5fa;color:#60a5fa;padding:7px 0;border-radius:20px;font-size:0.74rem;font-weight:700;cursor:pointer;transition:all 0.2s;">
+      ❄️ Tél
+    </button>
+  </div>
+</div>
+
+<!-- PAGE: BEÍRÁS -->
+<div class="page active" id="pageBeiras">
+  <div class="card">
+    <div class="card-title">👤 Ki vagy?</div>
+    <div class="name-chips" id="nameChips"><div class="loading" style="padding:10px">Betöltés...</div></div>
+    <button class="name-chip add-chip" onclick="toggleNewName()">+ Nem vagyok a listán</button>
+    <div class="new-name-row" id="newNameRow">
+      <input type="text" id="newPersonInput" class="text-input" placeholder="Neved...">
+      <button class="small-btn" onclick="confirmNewPerson()">OK</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">🕐 Melyik órára jársz?</div>
+    <div class="slot-buttons">
+      <button class="slot-btn" data-slot="7" onclick="selectSlot('7',this)">7:00 <span>óra</span></button>
+      <button class="slot-btn" data-slot="8" onclick="selectSlot('8',this)">8:00 <span>óra</span></button>
+      <button class="slot-btn" data-slot="9" onclick="selectSlot('9',this)">9:00 <span>óra</span></button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">📝 Mai eredmények</div>
+    <div class="ex-grid" id="exGrid"></div>
+    <div class="score-previewer: 1px solid var(--border);
+  border-radius: 10px; color: var(--text); font-size: 0.88rem; outline: none;
+}
+
+/* MISC */
+.loading { text-align: center; padding: 40px; color: var(--muted); }
+.empty { text-align: center; padding: 30px 20px; color: var(--muted); font-size: 0.9rem; }
+.toast {
+  position: fixed; bottom: 76px; left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--green); color: #fff; padding: 11px 22px; border-radius: 10px;
+  font-weight: 700; font-size: 0.9rem;
+  opacity: 0; transition: opacity 0.3s, transform 0.3s;
+  z-index: 999; white-space: nowrap; pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+@media (max-width: 380px) {
+  .entry-pills { grid-template-columns: repeat(3, 1fr); }
+  .mini-stats { grid-template-columns: repeat(2, 1fr); }
+  .score-num { font-size: 2.2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- SETTINGS MODAL -->
+<div class="overlay" id="settingsOverlay" onclick="if(event.target===this)closeSettings()">
+  <div class="modal">
+    <div class="modal-title">⚙️ Tagok kezelése <button class="modal-close" onclick="closeSettings()">✕</button></div>
+    <div id="membersList"><div class="loading">Betöltés...</div></div>
+    <div id="restoreSection"></div>
+    <div class="add-member-form">
+      <input type="text" id="newMemberName" class="text-input" placeholder="Új tag neve...">
+      <select id="newMemberOra" class="ora-select">
+        <option value="">Óra?</option>
+        <option value="7">7 óra</option>
+        <option value="8">8 óra</option>
+        <option value="9">9 óra</option>
+      </select>
+      <button class="small-btn" onclick="addMember()">+ Hozzáad</button>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div>
+    <h1>💪 Edzés Tracker</h1>
+    <p id="headerSub">Betöltés...</p>
+  </div>
+  <button class="gear-btn" onclick="openSettings()">⚙️ Tagok</button>
+</header>
+
+<!-- SEASON BANNER -->
+<div style="background:linear-gradient(135deg,#0f172a,#1a1a2e);border-bottom:1px solid #2a2a4a;padding:10px 14px;">
+  <div style="display:flex;gap:6px;">
+    <button id="seasonBtn_2026_nyar" onclick="switchSeason('2026_nyar')"
+      style="flex:1;background:none;border:1px solid rgba(255,255,255,0.12);color:#64748b;padding:7px 0;border-radius:20px;font-size:0.74rem;font-weight:700;cursor:pointer;transition:all 0.2s;">
+      ☀️ Nyár
+    </button>
+    <button id="seasonBtn_2026_osz" onclick="switchSeason('2026_osz')"
+      style="flex:1;background:none;border:1px solid rgba(255,255,255,0.12);color:#64748b;padding:7px 0;border-radius:20px;font-size:0.74rem;font-weight:700;cursor:pointer;transition:all 0.2s;">
+      🍂 Ősz
+    </button>
+    <button id="seasonBtn_2026_tel" onclick="switchSeason('2026_tel')"
+      style="flex:1;background:rgba(96,165,250,0.15);border:1px solid #60a5fa;color:#60a5fa;padding:7px 0;border-radius:20px;font-size:0.74rem;font-weight:700;cursor:pointer;transition:all 0.2s;">
+      ❄️ Tél
+    </button>
+  </div>
 </div>
 
 <!-- PAGE: BEÍRÁS -->
@@ -456,32 +558,32 @@ header p { font-size: 0.73rem; color: var(--muted); margin-top: 2px; }
 <div class="page" id="pageSzabaly">
 
   <!-- QUICK SUMMARY CARD -->
-  <div class="card" style="background:linear-gradient(135deg,#1a1a2e,#16213e);border-color:rgba(249,115,22,0.4)">
-    <div style="font-size:1rem;font-weight:800;color:var(--accent);margin-bottom:12px;">📈 Ha követnéd a fejlődésed, írd be a számokat!</div>
+  <div class="card" style="background:linear-gradient(135deg,#0f172a,#1e1b4b);border-color:rgba(96,165,250,0.4)">
+    <div style="font-size:1rem;font-weight:800;color:#60a5fa;margin-bottom:12px;">❄️ 2026 Tél — Ha követnéd a fejlődésed, írd be a számokat!</div>
     <div style="font-size:0.82rem;color:var(--muted);margin-bottom:14px;">Számold, hány ismétlést hajtottál végre. Írd be az eredményedet — hogy lásd a saját fejlődésed!</div>
     <div style="display:flex;flex-direction:column;gap:8px;">
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:rgba(249,115,22,0.08);border-radius:8px;border-left:3px solid #f97316;">
-        <span style="font-size:0.82rem;color:var(--text)">🐯 Tigrisből fekvő</span>
-        <span style="font-size:0.78rem;font-weight:700;color:#f97316">Írd be a számot (ha fekvővel csinálod ×3)</span>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:rgba(96,165,250,0.08);border-radius:8px;border-left:3px solid #60a5fa;">
+        <span style="font-size:0.82rem;color:var(--text)">⛷️ Síelős oldalugrás</span>
+        <span style="font-size:0.78rem;font-weight:700;color:#60a5fa">Írd be a számot</span>
       </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:rgba(59,130,246,0.08);border-radius:8px;border-left:3px solid #3b82f6;">
-        <span style="font-size:0.82rem;color:var(--text)">🏃 Inga futás</span>
-        <span style="font-size:0.78rem;font-weight:700;color:#3b82f6">Írd be a számot</span>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:rgba(167,139,250,0.08);border-radius:8px;border-left:3px solid #a78bfa;">
+        <span style="font-size:0.82rem;color:var(--text)">🤸 Kézenállás lábcsere</span>
+        <span style="font-size:0.78rem;font-weight:700;color:#a78bfa">Írd be a számot</span>
       </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:rgba(16,185,129,0.08);border-radius:8px;border-left:3px solid #10b981;">
-        <span style="font-size:0.82rem;color:var(--text)">💪 Lógás / Húzódzkodás</span>
-        <span style="font-size:0.78rem;font-weight:700;color:#10b981">Írd be a számot (hajlított kar ×3)</span>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:rgba(52,211,153,0.08);border-radius:8px;border-left:3px solid #34d399;">
+        <span style="font-size:0.82rem;color:var(--text)">🦵 Talajérintés + oldalrúgás</span>
+        <span style="font-size:0.78rem;font-weight:700;color:#34d399">Írd be a számot</span>
       </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:rgba(168,85,247,0.08);border-radius:8px;border-left:3px solid #a855f7;">
-        <span style="font-size:0.82rem;color:var(--text)">🦵 Rúgások (csípő fölé)</span>
-        <span style="font-size:0.78rem;font-weight:700;color:#a855f7">Írd be a számot</span>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:rgba(251,146,60,0.08);border-radius:8px;border-left:3px solid #fb923c;">
+        <span style="font-size:0.82rem;color:var(--text)">💪 Hajlított karral függés</span>
+        <span style="font-size:0.78rem;font-weight:700;color:#fb923c">Írd be a számot (csak hajlítva ×3)</span>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:rgba(244,63,94,0.08);border-radius:8px;border-left:3px solid #f43f5e;">
-        <span style="font-size:0.82rem;color:var(--text)">🐾 Quadropedal Gallop</span>
+        <span style="font-size:0.82rem;color:var(--text)">👊 6 ütés + talajérintés kombó</span>
         <span style="font-size:0.78rem;font-weight:700;color:#f43f5e">Írd be a számot</span>
       </div>
     </div>
-    <div style="margin-top:14px;padding:10px 12px;background:rgba(16,185,129,0.12);border-radius:8px;text-align:center;font-size:0.8rem;font-weight:700;color:#10b981;">
+    <div style="margin-top:14px;padding:10px 12px;background:rgba(96,165,250,0.12);border-radius:8px;text-align:center;font-size:0.8rem;font-weight:700;color:#60a5fa;">
       ✅ A többit a rendszer számolja!
     </div>
   </div>
@@ -491,186 +593,148 @@ header p { font-size: 0.73rem; color: var(--muted); margin-top: 2px; }
     👇 Itt láthatod részletesebben, hogy mi zajlik a háttérben
   </div>
 
-  <!-- 1. Tigrisből fekvő -->
+  <!-- 1. Síelős oldalugrás -->
   <div class="szabaly-card" id="szabaly-0">
     <div class="szabaly-header">
-      <div class="szabaly-icon">🐯</div>
+      <div class="szabaly-icon">⛷️</div>
       <div>
-        <div class="szabaly-title">Tigrisből fekvő</div>
-        <div class="szabaly-subtitle">Számold ki, majd írd be az összesített értéket</div>
+        <div class="szabaly-title">Síelős oldalugrás</div>
+        <div class="szabaly-subtitle">Páros lábbal, oldalra, talajérintéssel</div>
       </div>
     </div>
-    <div class="how-to-box">
-      <div class="how-to-label">📌 Hogyan hajtsd végre</div>
+    <div class="how-to-box" style="background:linear-gradient(135deg,rgba(96,165,250,0.09),rgba(96,165,250,0.03));border-color:rgba(96,165,250,0.3)">
+      <div class="how-to-label" style="color:#60a5fa">📌 Hogyan hajtsd végre</div>
       <div class="szabaly-text">
-        Indulj <strong style="color:var(--accent)">tigris plank helyzetből</strong> (négykezlábas, de térdek a levegőben, csak kézfejek és lábujjak érintik a talajt).<br><br>
-        • <strong style="color:var(--accent)">Tigrisből fekvőtámasz</strong> = nehezebb változat → <strong style="color:#f97316">3 pontot ér</strong><br>
-        • <strong style="color:var(--accent)">Sima fekvőtámasz</strong> = alaptempó → <strong style="color:#f97316">1 pontot ér</strong>
+        Ugraj oldalra páros lábbal, érintsd meg a talajt, majd vissza.<br><br>
+        Minden <strong style="color:#60a5fa">ugrás + talajérintés = 1 ismétlés</strong>.
       </div>
     </div>
     <div class="szabaly-section">
       <div class="szabaly-section-label">✏️ Mit írj be</div>
-      <div class="szabaly-text">(tigris db × 3) + (sima db × 1) = <strong style="color:var(--accent)">ezt írd be</strong></div>
-      <div class="szabaly-example">10 tigris + 20 sima → 10×3 + 20 = <strong>50</strong> → írj be <strong>50</strong>-et</div>
-      <div class="szabaly-example">0 tigris + 30 sima → <strong>30</strong> → írj be <strong>30</strong>-at</div>
-      <div class="szabaly-example">15 tigris + 0 sima → 15×3 = <strong>45</strong> → írj be <strong>45</strong>-öt</div>
-    </div>
-    <details class="rendszer-details">
-      <summary>⚡ A rendszer a háttérben (sávos szorzó)</summary>
-      <div class="rendszer-body">
-        <table class="tier-table">
-          <thead><tr><th>Beírt érték</th><th>Szorzó</th><th>Példa</th></tr></thead>
-          <tbody>
-            <tr><td>1 – 30</td><td>× 1,0</td><td>30 → 30 pont</td></tr>
-            <tr><td>31 – 40</td><td>× 1,2</td><td>40 → 48 pont</td></tr>
-            <tr><td>41 – 50</td><td>× 1,4</td><td>50 → 70 pont</td></tr>
-            <tr><td>51 – 60</td><td>× 1,6</td><td>60 → 96 pont</td></tr>
-            <tr><td>60 felett</td><td>× 1,8</td><td>70 → 126 pont</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </details>
-  </div>
-
-  <!-- 2. Inga futás -->
-  <div class="szabaly-card" id="szabaly-1">
-    <div class="szabaly-header">
-      <div class="szabaly-icon">🏃</div>
-      <div>
-        <div class="szabaly-title">Inga futás</div>
-        <div class="szabaly-subtitle">Minden irányváltást számolj egynek</div>
-      </div>
-    </div>
-    <div class="how-to-box" style="background:linear-gradient(135deg,rgba(59,130,246,0.09),rgba(59,130,246,0.03));border-color:rgba(59,130,246,0.3)">
-      <div class="how-to-label" style="color:#3b82f6">📌 Hogyan hajtsd végre</div>
-      <div class="szabaly-text">
-        Futás az egyik végponttól a másikig és vissza — minden <strong style="color:#3b82f6">irányváltás = 1</strong>.<br><br>
-        • Oda futás = <strong style="color:#3b82f6">1</strong><br>
-        • Visszafutás = <strong style="color:#3b82f6">+1</strong>, tehát <strong style="color:#3b82f6">oda-vissza = 2</strong>
-      </div>
-    </div>
-    <div class="szabaly-section">
-      <div class="szabaly-section-label">✏️ Mit írj be</div>
-      <div class="szabaly-text">Az összes irányváltás száma = <strong style="color:var(--accent)">ezt írd be</strong></div>
-      <div class="szabaly-example">15 oda-vissza → 15×2 = <strong>30</strong> irányváltás → írj be <strong>30</strong>-at</div>
-      <div class="szabaly-example">20 irányváltás → írj be <strong>20</strong>-at</div>
-    </div>
-    <details class="rendszer-details">
-      <summary>⚡ A rendszer a háttérben (sávos szorzó)</summary>
-      <div class="rendszer-body">
-        <table class="tier-table">
-          <thead><tr><th>Beírt érték</th><th>Szorzó</th><th>Példa</th></tr></thead>
-          <tbody>
-            <tr><td>1 – 30</td><td>× 1,0</td><td>30 → 30 pont</td></tr>
-            <tr><td>31 – 40</td><td>× 1,2</td><td>40 → 48 pont</td></tr>
-            <tr><td>41 felett</td><td>× 1,4</td><td>50 → 70 pont</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </details>
-  </div>
-
-  <!-- 3. Lógás / Húzódzkodás -->
-  <div class="szabaly-card" id="szabaly-2">
-    <div class="szabaly-header">
-      <div class="szabaly-icon">💪</div>
-      <div>
-        <div class="szabaly-title">Lógás / Húzódzkodás</div>
-        <div class="szabaly-subtitle">Számold ki, majd írd be az összesített értéket</div>
-      </div>
-    </div>
-    <div class="how-to-box" style="background:linear-gradient(135deg,rgba(16,185,129,0.09),rgba(16,185,129,0.03));border-color:rgba(16,185,129,0.3)">
-      <div class="how-to-label" style="color:#10b981">📌 Hogyan hajtsd végre</div>
-      <div class="szabaly-text">
-        Rúdon való megtartás — kétféle pozíció:<br><br>
-        • <strong style="color:#10b981">Nyújtott karral lógás</strong> = minden mp <strong style="color:#10b981">1 pont</strong><br>
-        • <strong style="color:#10b981">Teljesen behajlított karral lógás</strong> = minden mp <strong style="color:#10b981">3 pont</strong>
-      </div>
-    </div>
-    <div class="szabaly-section">
-      <div class="szabaly-section-label">✏️ Mit írj be</div>
-      <div class="szabaly-text">(hajlított mp × 3) + (nyújtott mp × 1) = <strong style="color:var(--accent)">ezt írd be</strong></div>
-      <div class="szabaly-example">30mp hajlítva + 20mp nyújtva → 30×3 + 20 = <strong>110</strong> → írj be <strong>110</strong>-et</div>
-      <div class="szabaly-example">0mp hajlítva + 40mp nyújtva → <strong>40</strong> → írj be <strong>40</strong>-et</div>
+      <div class="szabaly-text">Az összes ismétlés száma = <strong style="color:var(--accent)">ezt írd be</strong></div>
+      <div class="szabaly-example">20 ugrás → írj be <strong>20</strong>-at</div>
     </div>
     <details class="rendszer-details">
       <summary>⚡ A rendszer a háttérben</summary>
       <div class="rendszer-body">
-        <div style="color:#10b981;font-weight:700;font-size:0.85rem;">
-          A beírt szám = a pontszámod. Nincs további szorzó!
-        </div>
+        <div style="color:#60a5fa;font-weight:700;font-size:0.85rem;">Minden ismétlés × 2,0 szorzóval számít.</div>
       </div>
     </details>
   </div>
 
-  <!-- 4. Rúgások -->
-  <div class="szabaly-card" id="szabaly-3">
+  <!-- 2. Kézenállás lábcsere -->
+  <div class="szabaly-card" id="szabaly-1">
     <div class="szabaly-header">
-      <div class="szabaly-icon">🦵</div>
+      <div class="szabaly-icon">🤸</div>
       <div>
-        <div class="szabaly-title">Rúgások (csípő fölé)</div>
-        <div class="szabaly-subtitle">Minden érvényes rúgást számolj egynek</div>
+        <div class="szabaly-title">Kézenállás lábcsere</div>
+        <div class="szabaly-subtitle">Lendüléssel, ollózásos lábcsere</div>
       </div>
     </div>
-    <div class="how-to-box" style="background:linear-gradient(135deg,rgba(168,85,247,0.09),rgba(168,85,247,0.03));border-color:rgba(168,85,247,0.3)">
-      <div class="how-to-label" style="color:#a855f7">📌 Hogyan hajtsd végre</div>
+    <div class="how-to-box" style="background:linear-gradient(135deg,rgba(167,139,250,0.09),rgba(167,139,250,0.03));border-color:rgba(167,139,250,0.3)">
+      <div class="how-to-label" style="color:#a78bfa">📌 Hogyan hajtsd végre</div>
       <div class="szabaly-text">
-        Minden <strong style="color:#a855f7">csípő fölé</strong> emelt érvényes rúgás = <strong style="color:#a855f7">1</strong>.<br><br>
-        Váltott lábbal rúgj, tartsd a törzset stabilan.
+        Kézenállásból lendülj fel, ollózó mozdulattal cseréld a lábaid.<br><br>
+        Minden <strong style="color:#a78bfa">lábcsere = 1</strong>.
       </div>
     </div>
     <div class="szabaly-section">
       <div class="szabaly-section-label">✏️ Mit írj be</div>
-      <div class="szabaly-text">Az összes rúgás száma = <strong style="color:var(--accent)">ezt írd be</strong></div>
-      <div class="szabaly-example">35 rúgás → írj be <strong>35</strong>-öt</div>
+      <div class="szabaly-text">Az összes lábcsere száma = <strong style="color:var(--accent)">ezt írd be</strong></div>
+      <div class="szabaly-example">15 lábcsere → írj be <strong>15</strong>-öt</div>
     </div>
     <details class="rendszer-details">
-      <summary>⚡ A rendszer a háttérben (sávos szorzó)</summary>
+      <summary>⚡ A rendszer a háttérben</summary>
       <div class="rendszer-body">
-        <table class="tier-table">
-          <thead><tr><th>Beírt érték</th><th>Szorzó</th><th>Példa</th></tr></thead>
-          <tbody>
-            <tr><td>1 – 40</td><td>× 1,0</td><td>40 → 40 pont</td></tr>
-            <tr><td>41 – 60</td><td>× 1,2</td><td>60 → 72 pont</td></tr>
-            <tr><td>61 felett</td><td>× 1,5</td><td>70 → 105 pont</td></tr>
-          </tbody>
-        </table>
+        <div style="color:#a78bfa;font-weight:700;font-size:0.85rem;">Minden lábcsere × 2,0 szorzóval számít.</div>
       </div>
     </details>
   </div>
 
-  <!-- 5. Quadropedal Gallop -->
+  <!-- 3. Talajérintés + oldalrúgás -->
+  <div class="szabaly-card" id="szabaly-2">
+    <div class="szabaly-header">
+      <div class="szabaly-icon">🦵</div>
+      <div>
+        <div class="szabaly-title">Talajérintés + oldalrúgás</div>
+        <div class="szabaly-subtitle">Érintés és rúgás = 1 ismétlés</div>
+      </div>
+    </div>
+    <div class="how-to-box" style="background:linear-gradient(135deg,rgba(52,211,153,0.09),rgba(52,211,153,0.03));border-color:rgba(52,211,153,0.3)">
+      <div class="how-to-label" style="color:#34d399">📌 Hogyan hajtsd végre</div>
+      <div class="szabaly-text">
+        Érintsd meg a talajt, majd rúgj oldalra.<br><br>
+        Minden <strong style="color:#34d399">talajérintés + rúgás = 1 ismétlés</strong>.
+      </div>
+    </div>
+    <div class="szabaly-section">
+      <div class="szabaly-section-label">✏️ Mit írj be</div>
+      <div class="szabaly-text">Az összes ismétlés száma = <strong style="color:var(--accent)">ezt írd be</strong></div>
+      <div class="szabaly-example">30 ismétlés → írj be <strong>30</strong>-at → <strong>75 pont</strong> (×2,5)</div>
+    </div>
+    <details class="rendszer-details">
+      <summary>⚡ A rendszer a háttérben</summary>
+      <div class="rendszer-body">
+        <div style="color:#34d399;font-weight:700;font-size:0.85rem;">Minden ismétlés × 2,5 szorzóval számít.</div>
+      </div>
+    </details>
+  </div>
+
+  <!-- 4. Hajlított karral függés -->
+  <div class="szabaly-card" id="szabaly-3">
+    <div class="szabaly-header">
+      <div class="szabaly-icon">💪</div>
+      <div>
+        <div class="szabaly-title">Hajlított karral függés</div>
+        <div class="szabaly-subtitle">Csak hajlítva számít — másodperceket mérj</div>
+      </div>
+    </div>
+    <div class="how-to-box" style="background:linear-gradient(135deg,rgba(251,146,60,0.09),rgba(251,146,60,0.03));border-color:rgba(251,146,60,0.3)">
+      <div class="how-to-label" style="color:#fb923c">📌 Hogyan hajtsd végre</div>
+      <div class="szabaly-text">
+        Rúdon, <strong style="color:#fb923c">teljesen behajlított karral</strong> tartsd magad.<br><br>
+        • <strong style="color:#fb923c">Hajlított kar</strong> = minden mp <strong style="color:#fb923c">3 pontot ér</strong><br>
+        • Nyújtott karral lógás = <strong style="color:var(--muted)">nem számít</strong>
+      </div>
+    </div>
+    <div class="szabaly-section">
+      <div class="szabaly-section-label">✏️ Mit írj be</div>
+      <div class="szabaly-text">A hajlított karral töltött másodpercek = <strong style="color:var(--accent)">ezt írd be</strong></div>
+      <div class="szabaly-example">20mp hajlítva → írj be <strong>20</strong>-at → <strong>60 pont</strong> (×3)</div>
+    </div>
+    <details class="rendszer-details">
+      <summary>⚡ A rendszer a háttérben</summary>
+      <div class="rendszer-body">
+        <div style="color:#fb923c;font-weight:700;font-size:0.85rem;">Minden hajlított mp × 3,0 szorzóval számít.</div>
+      </div>
+    </details>
+  </div>
+
+  <!-- 5. 6 ütés + talajérintés kombó -->
   <div class="szabaly-card" id="szabaly-4">
     <div class="szabaly-header">
-      <div class="szabaly-icon">🐾</div>
+      <div class="szabaly-icon">👊</div>
       <div>
-        <div class="szabaly-title">Quadropedal Gallop</div>
-        <div class="szabaly-subtitle">Minden gallopot számolj egynek</div>
+        <div class="szabaly-title">6 ütés + talajérintés kombó</div>
+        <div class="szabaly-subtitle">1 kombó = 6 ütés + 1 talajérintés</div>
       </div>
     </div>
     <div class="how-to-box" style="background:linear-gradient(135deg,rgba(244,63,94,0.09),rgba(244,63,94,0.03));border-color:rgba(244,63,94,0.3)">
       <div class="how-to-label" style="color:#f43f5e">📌 Hogyan hajtsd végre</div>
       <div class="szabaly-text">
-        Négy ponton mozgás — kéz-láb koordináció, gallop mozgásminta.<br><br>
-        Minden szabályos gallop = <strong style="color:#f43f5e">1</strong>.
+        6 ütés sorozat, majd 1 talajérintés = <strong style="color:#f43f5e">1 kombó</strong>.<br><br>
+        Számold, hány <strong style="color:#f43f5e">teljes kombót</strong> hajtottál végre.
       </div>
     </div>
     <div class="szabaly-section">
       <div class="szabaly-section-label">✏️ Mit írj be</div>
-      <div class="szabaly-text">Az összes gallop száma = <strong style="color:var(--accent)">ezt írd be</strong></div>
-      <div class="szabaly-example">18 gallop → írj be <strong>18</strong>-at</div>
+      <div class="szabaly-text">Az összes teljes kombó száma = <strong style="color:var(--accent)">ezt írd be</strong></div>
+      <div class="szabaly-example">10 kombó → írj be <strong>10</strong>-et → <strong>50 pont</strong> (×5,0)</div>
     </div>
     <details class="rendszer-details">
-      <summary>⚡ A rendszer a háttérben (sávos szorzó)</summary>
+      <summary>⚡ A rendszer a háttérben</summary>
       <div class="rendszer-body">
-        <table class="tier-table">
-          <thead><tr><th>Beírt érték</th><th>Szorzó</th><th>Példa</th></tr></thead>
-          <tbody>
-            <tr><td>1 – 10</td><td>× 2,5</td><td>10 → 25 pont</td></tr>
-            <tr><td>11 – 20</td><td>× 3,5</td><td>20 → 70 pont</td></tr>
-            <tr><td>21 felett</td><td>× 4,5</td><td>25 → 112,5 pont</td></tr>
-          </tbody>
-        </table>
+        <div style="color:#f43f5e;font-weight:700;font-size:0.85rem;">Minden kombó × 5,0 szorzóval számít.</div>
       </div>
     </details>
   </div>
@@ -716,7 +780,7 @@ const SEASONS = {
     ]
   },
   '2026_osz': {
-    label: '🍂 2026 Ősz', short: 'Ősz', readonly: false,
+    label: '🍂 2026 Ősz', short: 'Ősz', readonly: true,
     exercises: [
       { key:'tigris',  label:'Tigrisből fekvő',      unit:'db', icon:'🐯',
         unitLong:'tigris×3 + sima×1 (te számolod)', color:'#f97316',
@@ -738,10 +802,30 @@ const SEASONS = {
         calcType:'tiered', staticLabel:'gallop + szorzó',
         tiers:[[10,2.5],[20,3.5],[Infinity,4.5]] },
     ]
+  },
+  '2026_tel': {
+    label: '❄️ 2026 Tél', short: 'Tél', readonly: false,
+    exercises: [
+      { key:'sieugras',   label:'Síelős oldalugrás',           unit:'db', icon:'⛷️',
+        unitLong:'páros lábbal + talajérintés (db)', color:'#60a5fa',
+        mult:2.0, staticLabel:'ismétlés × 2,0' },
+      { key:'kezenallas', label:'Kézenállás lábcsere',          unit:'db', icon:'🤸',
+        unitLong:'ollózásos lábcsere (db)', color:'#a78bfa',
+        mult:2.0, staticLabel:'lábcsere × 2,0' },
+      { key:'talarug',    label:'Talajérintés + oldalrúgás',    unit:'db', icon:'🦵',
+        unitLong:'ismétlés (db)', color:'#34d399',
+        mult:2.5, staticLabel:'ismétlés × 2,5' },
+      { key:'hajlfugg',   label:'Hajlított karral függés',      unit:'mp', icon:'💪',
+        unitLong:'hajlított kar mp (te számolod)', color:'#fb923c',
+        mult:3.0, staticLabel:'mp × 3,0' },
+      { key:'uteskomb',   label:'6 ütés + talajérintés kombó', unit:'db', icon:'👊',
+        unitLong:'1 kombó = 6 ütés + talajérintés (db)', color:'#f43f5e',
+        mult:5.0, staticLabel:'kombó × 5,0' },
+    ]
   }
 };
 
-let currentSeason = '2026_osz';
+let currentSeason = '2026_tel';
 function getExercises() { return SEASONS[currentSeason].exercises; }
 const GROUP_COLORS = { '7':'#3b82f6', '8':'#10b981', '9':'#f97316' };
 
@@ -822,13 +906,20 @@ function goToRules(exIdx) {
 function switchSeason(key) {
   currentSeason = key;
   const season = SEASONS[key];
-  const other = key === '2026_osz' ? '2026_nyar' : '2026_osz';
-  document.getElementById('seasonLabel').textContent = season.label;
-  const btn = document.getElementById('seasonToggleBtn');
-  btn.textContent = '📅 ' + SEASONS[other].short + ' eredmények';
-  btn.onclick = () => switchSeason(other);
-  btn.style.borderColor = key === '2026_osz' ? '#3b82f6' : '#f97316';
-  btn.style.color = key === '2026_osz' ? '#3b82f6' : '#f97316';
+  const colors = { '2026_nyar':'#f97316', '2026_osz':'#f97316', '2026_tel':'#60a5fa' };
+  Object.keys(SEASONS).forEach(k => {
+    const b = document.getElementById('seasonBtn_' + k);
+    if (!b) return;
+    if (k === key) {
+      b.style.background = 'rgba(255,255,255,0.1)';
+      b.style.borderColor = colors[k] || '#f97316';
+      b.style.color = colors[k] || '#f97316';
+    } else {
+      b.style.background = 'none';
+      b.style.borderColor = 'rgba(255,255,255,0.12)';
+      b.style.color = '#64748b';
+    }
+  });
   document.getElementById('saveBtn').style.display = season.readonly ? 'none' : '';
   const rn = document.getElementById('readonlyNote');
   if (rn) rn.style.display = season.readonly ? 'block' : 'none';
